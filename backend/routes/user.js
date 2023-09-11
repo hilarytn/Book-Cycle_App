@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const router = express.Router();
 
+
 router.get('/', (req, res) => res.send("Coming soon!"));
 
 router.post('/', (req, res) => {
@@ -17,9 +18,9 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const foundUser = users.find((user) => user.id == id);
-    res.send(foundUser);
-    console.log(`User found: ${foundUser}`);
+    const user = users.find((user) => user.id == id);
+    res.send(user);
+    console.log(`User found: ${user}`);
 });
 
 router.patch('/:id', (req, res) => {
@@ -45,6 +46,13 @@ router.patch('/:id', (req, res) => {
 
     res.send(`Success, User ${id} updated!`);
     console.log(`Success, User ${id} updated!`);
-})
+});
+
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    users = users.filter((user) => user.id != id);
+    res.send(`User ${id} deleted!`);
+    console.log(`User ${id} deleted!`);
+});
 
 export default router;
