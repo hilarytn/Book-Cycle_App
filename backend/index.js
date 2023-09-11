@@ -1,6 +1,7 @@
 import express from 'express';
 import userRoutes from './routes/user.js';
 import users from './routes/miniDB.js';
+import { createUser } from './controllers/user.js';
 //const express = require('express');
 
 const app = express();
