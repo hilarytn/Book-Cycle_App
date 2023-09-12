@@ -61,4 +61,29 @@ To use the Book Cycle Application:
 
     * `GET /`: Home page of the Book Cycle Application.
 
+### Technologies Used
+* Node.js
+* Express.js
+* MongoDB
+* React.js (for the front end)
+* JSON Web Tokens (JWT) for authentication
+* Axios (for making API requests)
+* HTML, CSS, JavaScript
 
+### Contributing
+Contributions to the Book Cycle Application are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and submit a pull request.
+4. Ensure your code follows the project's coding standards
+
+### License
+This project is licensed under the MIT License - see the <b>LICENSE</b> file for details.
+
+### Acknowledgments
+* This project was inspired by the idea of creating a community for book lovers to share and exchange books.
+* Special thanks to <b>AwesomeBooks</b> for providing book data for our application.
+
+### Authors
+1. Nadduli Daniel <naddulidaniel1994@gmail.com>
