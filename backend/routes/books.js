@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-    getAllBooks,
-    getBookById,
-    createBook,
-    updateBook,
-    deleteBook
+  getAllBooks,
+  getBookById,
+  createBook,
+  updateBook,
+  deleteBook,
 } from '../controllers/bookController.js';
 
 const router = express.Router();

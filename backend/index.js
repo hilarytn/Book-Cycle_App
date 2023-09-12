@@ -1,9 +1,13 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import userRoutes from './routes/user.js';
 import bookRoutes from './routes/books.js';
 
+// Load environment variables from the .env file into process.env
+dotenv.config();
+
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use('/api', userRoutes);

@@ -22,5 +22,13 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-console': 'off',
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never" // Allow .js file extensions for imports
+      }
+    ]
   },
 };
