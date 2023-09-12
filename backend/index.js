@@ -1,20 +1,19 @@
 import express from 'express';
 import userRoutes from './routes/user.js';
 import users from './routes/miniDB.js';
-import { createUser } from './controllers/user.js';
 //const express = require('express');
 
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res) => {
     res.send('Home Page, Welcome!');
 })
 
-app.get('/users', (req, res) => {
+app.get('/api/users', (req, res) => {
     console.log(users);
     res.json(users);
 })

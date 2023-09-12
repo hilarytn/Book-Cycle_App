@@ -1,5 +1,4 @@
 import express from 'express';
-import users from './miniDB.js';
 import { createUser, getUserById, editUserDetails, deleteUser } from '../controllers/user.js';
 
 const router = express.Router();
