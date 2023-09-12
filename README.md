@@ -22,16 +22,15 @@ To run this application on your local machine, follow these steps:
    ```bash
    git clone https://github.com/hilarytn/Book-Cycle_App
 
+2. cd book-cycle-app
+
+3. Install dependencies
+    * npm install
+
+4. Start Project
+    * npm start index.js
+
 ## Usage
-- cd book-cycle-app
-
-### Install dependencies
-npm install
-
-### Start Project
-npm start index.js
-
-## Usage 2
 To use the Book Cycle Application:
 
 1. Create an account or log in if you already have one.
