@@ -1,13 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import users from '../routes/miniDB.js';
-
 export const createUser = (req, res) => {
-    const user = req.body;
-    users.push({ ...user, id: uuidv4(),
-        createdAt: new Date(),
-        updatedAt: new Date()});
-    res.send(`User with the name ${user.name} has been successfully created!`)
-    console.log(`User with the name ${user.name} has been successfully created!`);
+    res.status(200).json({message: "created a new user"})   
 }
 
 export const getUserById = (req, res) => {

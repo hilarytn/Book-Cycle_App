@@ -1,4 +1,11 @@
 import express from 'express';
+import {
+    getAllBooks,
+    getBookById,
+    createBook,
+    updateBook,
+    deleteBook
+} from '../controllers/bookController.js';
 
 const router = express.Router();
 
@@ -13,9 +20,7 @@ const router = express.Router();
  * @returns {object} List of books
  * @throws {Error} If an error occurs
  */
-router.get('/books', (req, res) => {
-  res.send('Get all books');
-});
+router.get('/books', getAllBooks);
 
 /**
  * Get a specific book by ID.
@@ -25,9 +30,7 @@ router.get('/books', (req, res) => {
  * @returns {object} The book.
  * @throws {Error} If the book is not found or an error occurs.
  */
-router.get('/:id', (req, res) => {
-  res.send('Book is found');
-});
+router.get('/books/:id', getBookById);
 
 /**
  * Create a new book.
@@ -37,9 +40,7 @@ router.get('/:id', (req, res) => {
  * @returns {object} The created book.
  * @throws {Error} If the request is invalid or an error occurs.
  */
-router.post('/', (req, res) => {
-  res.send('created a book successfully');
-});
+router.post('/books', createBook);
 
 /**
  * Update a specific book by ID.
@@ -50,9 +51,7 @@ router.post('/', (req, res) => {
  * @returns {object} The updated book.
  * @throws {Error} If the book is not found, the request is invalid, or an error occurs.
  */
-router.put('/books/:id', (req, res) => {
-  res.send('updated the book succesfully');
-});
+router.put('/books/:id', updateBook);
 
 /**
  * Delete a specific book by ID.
@@ -62,8 +61,6 @@ router.put('/books/:id', (req, res) => {
  * @returns {void}
  * @throws {Error} If the book is not found or an error occurs.
  */
-router.delete('/books/:id', (req, res) => {
-  res.send('deleted a book succesfully');
-});
+router.delete('/books/:id', deleteBook);
 
 export default router;

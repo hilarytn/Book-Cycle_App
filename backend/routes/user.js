@@ -1,15 +1,16 @@
 import express from 'express';
-import users from './miniDB.js';
-import { createUser, getUserById, editUserDetails, deleteUser } from '../controllers/user.js';
+import {
+    createUser,
+    getUserById,
+    editUserDetails,
+    deleteUser
+} from '../controllers/user.js';
 
 const router = express.Router();
 
-
-router.get('/', (req, res) => res.send("Coming soon!"));
-
-router.post('/', createUser);
-router.get('/:id', getUserById);
-router.patch('/:id', editUserDetails);
-router.delete('/:id', deleteUser);
+router.post('/user', createUser);
+router.get('/user/:id', getUserById);
+router.patch('/user/:id', editUserDetails);
+router.delete('user/:id', deleteUser);
 
 export default router;
