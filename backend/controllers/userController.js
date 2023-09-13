@@ -1,6 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const createUser = (req, res) => {
+export const userLogin = async (req, res) => {
+    res.status(200).json({ message: 'User login' });
+  };
+
+export const registerUser = (req, res) => {
     const user = req.body;
     users.push({ ...user, id: uuidv4(),
         createdAt: new Date(),
