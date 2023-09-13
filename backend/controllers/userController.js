@@ -1,5 +1,5 @@
 export const userLogin = async (req, res) => {
-    res.status(200).json({ message: 'User login' });
+    res.status(200).json({ message: 'User logged in' });
   };
 
 export const registerUser = async (req, res) => {
@@ -7,10 +7,7 @@ export const registerUser = async (req, res) => {
 }
 
 export const getUserById = (req, res) => {
-    const { id } = req.params;
-    const user = users.find((user) => user.id == id);
-    res.send(user);
-    console.log(`User found: ${user}`);
+    res.status(200).json({ message: 'User fetched!' });
 }
 
 export const editUserDetails = (req, res) => {
