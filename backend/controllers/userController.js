@@ -14,9 +14,6 @@ export const editUserDetails = async (req, res) => {
     res.status(200).json({ message: 'User details updated!' });
 }
 
-export const deleteUser = (req, res) => {
-    const { id } = req.params;
-    users = users.filter((user) => user.id != id);
-    res.send(`User ${id} deleted!`);
-    console.log(`User ${id} deleted!`);
+export const deleteUser = async (req, res) => {
+    res.status(200).json({ message: 'User deleted successfully!' });
 }
