@@ -6,7 +6,7 @@ export const registerUser = async (req, res) => {
     res.status(200).json({ message: 'Regitered user successfully!' });
 }
 
-export const getUserById = (req, res) => {
+export const getUserById = async (req, res) => {
     res.status(200).json({ message: 'User fetched!' });
 }
 
