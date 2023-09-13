@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.js';
 import connectDB from './config/db.js';
 
+dotenv.config();
 connectDB();
 const app = express();
-dotenv.config();
 const PORT = process.env.PORT || 5001;
 
 app.use(express.json());

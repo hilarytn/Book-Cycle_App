@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-//const MONGO_URI = process.env.MONGO_URI;
+dotenv.config();
+const MONGO_URI = process.env.MONGO_URI;
 
 const connectDB = async () => {
     try {
         const connectMongo = await mongoose.connect(
-            "mongodb+srv://bookcycle:bookcycleXXXX@book-cycle.naza1nv.mongodb.net/?retryWrites=true&w=majority",
+            MONGO_URI,
              {dbName: 'bookcycle'});
         console.log(`MongoDB connected: ${connectMongo.connection.host}`);
     } catch (error) {

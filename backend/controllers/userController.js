@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import users from '../routes/miniDB.js';
 
 export const createUser = (req, res) => {
     const user = req.body;
