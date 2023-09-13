@@ -1,16 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
-
 export const userLogin = async (req, res) => {
     res.status(200).json({ message: 'User login' });
   };
 
-export const registerUser = (req, res) => {
-    const user = req.body;
-    users.push({ ...user, id: uuidv4(),
-        createdAt: new Date(),
-        updatedAt: new Date()});
-    res.send(`User with the name ${user.name} has been successfully created!`)
-    console.log(`User with the name ${user.name} has been successfully created!`);
+export const registerUser = async (req, res) => {
+    res.status(200).json({ message: 'Regiter a user' });
 }
 
 export const getUserById = (req, res) => {
