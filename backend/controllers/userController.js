@@ -3,7 +3,7 @@ export const userLogin = async (req, res) => {
   };
 
 export const registerUser = async (req, res) => {
-    res.status(200).json({ message: 'Regiter a user' });
+    res.status(200).json({ message: 'Regitered user successfully!' });
 }
 
 export const getUserById = (req, res) => {
