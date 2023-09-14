@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { PrivateRoute } from "./components"
+import { ToastContainer } from "react-toastify"
 
+import { PrivateRoute } from "./components"
+import { LoginPage } from "./pages"
 
 
 const App: React.FC = () => {
@@ -11,9 +13,10 @@ const App: React.FC = () => {
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<div>Home</div>} />
           </Route>
-          <Route path="/login" element={<div>Login</div>} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </div>
   )
 }
