@@ -22,23 +22,23 @@ const Navbar = () => {
             </div>
             <div>
                 <ul className='flex justify-center items-center gap-[3vw] text-[14px] text-black'>
-                    <li className={page === PageEnum.Home ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:border-b hover:pb-2 delay-100`}>
+                    <li className={page === PageEnum.Home ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100`}>
                         <icons.homeIcon 
                             className='text-lg'
                         />
                         <p>Home</p>
                     </li>
-                    <li className={page === PageEnum.Messaging ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:border-b hover:pb-2 delay-100`}>
+                    <li className={page === PageEnum.Messaging ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100`}>
                         <icons.messageIcon 
                             className='text-lg'
                         />
                         Messaging</li>
-                        <li className={page === PageEnum.Notification ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:border-b hover:pb-2 delay-100`}>
+                        <li className={page === PageEnum.Notification ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100`}>
                         <icons.notificationIcon
                             className='text-lg'
                         />
                         Notifications</li>
-                        <li className={page === PageEnum.Profile ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:border-b hover:pb-2 delay-100`}>
+                        <li className={page === PageEnum.Profile ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100`}>
                         <icons.userIcon 
                             className='text-lg'
                         />
