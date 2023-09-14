@@ -41,12 +41,14 @@ const Login = () => {
                 />
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>
-            <button 
-                    className='bg-secondary text-white font-semibold
-                                hover:bg-black hover:scale-75 delay-100
-                                tracking-wide mx-[30%] rounded py-3 px-9 mt-8 mb-6'
-                    type="submit">
-                        Sign In</button>
+            <div className='text-center'>
+                <button 
+                        className='bg-secondary text-white font-semibold
+                                    hover:bg-black hover:scale-75 delay-100
+                                    tracking-wide rounded py-3 px-9 mt-8 mb-6'
+                        type="submit">
+                            Sign In</button>
+            </div>
         </form>
     </div>
   )
