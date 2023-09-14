@@ -1,27 +1,81 @@
 import Book from "../models/Book.js";
+import upload from "../middleware/fileUpload.js";
+
+/*
+export const createBook = async (req, res) => {
+  try {
+    // Use 'upload.single('coverArt')' as middleware to handle file upload
+    upload.single('coverArt')(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ error: 'File upload failed'});
+      }
+
+      try {
+        const { title, author, genre, description, condition, owner, availabilityStatus, coverArtUrl } = req.body;
+        const existingBook = await Book.findOne({ title, author, genre });
+
+        if (existingBook) {
+          return res.status(400).json({ error: 'A book with the same title, author, and genre already exists' });
+        }
+        const newBook = new Book({
+          title,
+          author,
+          genre,
+          description,
+          condition,
+          owner,
+          availabilityStatus,
+          coverArtUrl: err ? null : req.file.path
+        })
+        const savedBook = await newBook.save();
+        res.status(201).json(savedBook);
+      } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+*/
 
 export const createBook = async (req, res) => {
   try {
-    const { title, author, genre, description, condition, owner, availabilitystatus, coverArtUrl } = req.body;
-    const existingBook = await Book.findOne({ title, author, genre })
+    // Use 'upload.single('coverArt')' as middleware to handle file upload
+    const multerMiddleware = upload.single('coverArt');
+    
+    multerMiddleware(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ error: 'File upload failed' });
+      }
 
-    if (existingBook) {
-      res.status(400).json({errror: 'A book with the same title, author, and genre already exists'})
-    }
-    const newBook = new Book({
-      title,
-      author,
-      genre,
-      description,
-      condition,
-      owner,
-      availabilitystatus,
-      coverArtUrl
-    })
-    const savedBook = await newBook.save();
-    res.status(201).json(savedBook);
+      try {
+        const { title, author, genre, description, condition, owner, availabilityStatus } = req.body;
+        const existingBook = await Book.findOne({ title, author, genre });
+
+        if (existingBook) {
+          return res.status(400).json({ error: 'A book with the same title, author, and genre already exists' });
+        }
+        
+        const newBook = new Book({
+          title,
+          author,
+          genre,
+          description,
+          condition,
+          owner,
+          availabilityStatus,
+          coverArtUrl: req.file ? req.file.path : null,
+        });
+
+        const savedBook = await newBook.save();
+        res.status(201).json(savedBook);
+      } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
   } catch (error) {
-    res.status(500).json({error : 'Internal Server Error'});
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 

@@ -13,7 +13,9 @@ const bookSchema = new Schema({
         ref: 'User'
     },
     availabilityStatus: String,
-    coverArtUrl: String
+    coverArtUrl: {
+        type: mongoose.Schema.Types.String
+    }
 }, {timestamps: true});
 
 const Book = mongoose.model('Book', bookSchema);
