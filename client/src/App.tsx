@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
-import { PrivateRoute } from "./components"
+import { PrivateRoute, Navbar } from "./components"
 import { LoginPage, HomePage } from "./pages"
 
 
 const App: React.FC = () => {
   return (
     <div>
+      <Navbar />
       <Router>
         <Routes>
           <Route element={<PrivateRoute />}>
