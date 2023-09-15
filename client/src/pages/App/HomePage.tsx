@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { setCurrentPage } from '../../redux/features/userSlice'
 import PageEnum from '../../utils/enums'
+import { Books, MoreBooks } from '../../components'
 
 const HomePage = () => {
     const dispatch = useDispatch()
+    const [moreBooks, setMoreBooks] = useState<boolean>(false)
 
     useEffect(() => {
         dispatch(setCurrentPage(PageEnum.Home))
@@ -36,6 +38,12 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {moreBooks ? (
+        <MoreBooks setMoreBooks={setMoreBooks} />
+      ) : (
+        <Books setMoreBooks={setMoreBooks}/>
+      )}
     </>
   )
 }
