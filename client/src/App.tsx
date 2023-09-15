@@ -6,9 +6,12 @@ import { LoginPage, HomePage } from "./pages"
 
 
 const App: React.FC = () => {
+
+  const isAuthenticated = true;
+
   return (
     <div>
-      <Navbar />
+      {isAuthenticated && <Navbar />}
       <Router>
         <Routes>
           <Route element={<PrivateRoute />}>
