@@ -12,18 +12,18 @@ const ProfilePage = () => {
     <>
         <section>
             <div
-                className='h-[60vh] w-screen flex justify-center items-center 
-                        bg-gradient-to-r from-secondary to-black/80 bg-blend-multiply'
+                className='h-[60vh] w-screen flex justify-center items-center bg-profile-pattern
+                            bg-cover bg-center bg-no-repeat bg-blend-multiply bg-black/40'
             >
             </div>
-            <div>
+            <div className='flex justify-center'>
                 <img
-                    className='w-[250px] h-[250px] rounded-full border-8 border-white absolute top-[47vh] left-[20vw] md:left-[35vw] lg:left-[40vw]'
+                    className='w-[250px] h-[250px] rounded-full border-8 border-white absolute top-[47vh] left-[22vw] md:left-[36vw] lg:left-[42vw]'
                     src={images.login} alt="user-profile" />
                     <button 
                         className='text-white bg-blue-300 p-2 rounded-lg flex items-center gap-1
                                     hover:bg-blue-400 hover:scale-105 delay-100 capitalize
-                                    absolute top-[75vh] md:top-[72vh] lg:top-[78vh] left-[35vw] md:left-[42vw] lg:left-[45vw]'>
+                                      mt-[16vh]  md:mt-[12vh]'>
                         <icons.editIcon />
                         <span>change photo</span>
                     </button>

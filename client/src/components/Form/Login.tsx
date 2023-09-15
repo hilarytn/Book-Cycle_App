@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { LoginForm } from '../../utils/types/formType';
@@ -10,14 +10,14 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
         resolver: yupResolver(loginSchema)
     });
-    const onSubmit = handleSubmit((data) => console.log(data));
+    const onSubmit: SubmitHandler<LoginForm> = (data) => console.log(data);
 
   return (
     <div>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col mb-8">
                 <icons.emailIcon 
-                    className='absolute mt-[14px] ms-3 text-lg'
+                    className='absolute mt-[15px] ms-3 text-lg'
                 />
                 <input
                     className='bg-primary placeholder:text-secondary rounded py-3 px-9'
@@ -30,7 +30,7 @@ const Login = () => {
             </div>
             <div className="flex flex-col">
                 <icons.passwordIcon
-                    className='absolute mt-[14px] ms-3 text-lg'
+                    className='absolute mt-[15px] ms-3 text-lg'
                     />
                 <input
                     className='bg-primary placeholder:text-secondary rounded py-3 px-9'

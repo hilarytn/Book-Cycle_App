@@ -9,7 +9,7 @@ import PageEnum from '../utils/enums'
 const Navbar = () => {
 
     const page = useSelector(selectPage)
-    const activeStyling = 'bg-secondary text-white px-4 py-2 rounded-md tracking-wider uppercase flex items-center gap-1 tracking-wider cursor-pointer'
+    const activeStyling = 'bg-secondary text-white px-4 py-2 tracking-wider uppercase flex items-center gap-1 tracking-wider cursor-pointer'
     
 
   return (
