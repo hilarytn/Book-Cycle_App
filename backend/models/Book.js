@@ -14,7 +14,7 @@ const bookSchema = new Schema({
     },
     availabilityStatus: String,
     coverArtUrl: {
-        type: mongoose.Schema.Types.String
+        type: String
     }
 }, {timestamps: true});
 

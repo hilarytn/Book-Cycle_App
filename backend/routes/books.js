@@ -6,6 +6,7 @@ import {
   updateBook,
   deleteBook,
 } from '../controllers/bookController.js';
+import upload from '../middleware/fileUpload.js';
 
 const router = express.Router();
 
@@ -40,7 +41,7 @@ router.get('/books/:id', getBookById);
  * @returns {object} The created book.
  * @throws {Error} If the request is invalid or an error occurs.
  */
-router.post('/books', createBook);
+router.post('/books', upload.single('coverArtUrl'), createBook);
 
 /**
  * Update a specific book by ID.
