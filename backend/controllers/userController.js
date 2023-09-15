@@ -59,3 +59,16 @@ export const editUserDetails = async (req, res) => {
 export const deleteUser = async (req, res) => {
     res.status(200).json({ message: 'User deleted successfully!' });
 }
+
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        if(!users) {
+          res.status(404).json({error: 'Users not found!'})
+        }
+        console.log(users);
+        res.status(200).json(users);
+      } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+      }
+}

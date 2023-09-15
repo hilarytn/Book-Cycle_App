@@ -3,7 +3,8 @@ import { userLogin,
     registerUser,
     getUserById,
     editUserDetails,
-    deleteUser
+    deleteUser,
+    getAllUsers
 } from '../controllers/userController.js';
 
 const router = express.Router();
@@ -20,9 +21,9 @@ router.get('/login', userLogin);
  * Homepage.
  *
  * @route GET /
- * @returns {string} A message indicating that the page is coming soon.
+ * @returns {object} Fetches all users.
  */
-router.get('/', (req, res) => res.send("Coming soon!"));
+router.get('/', getAllUsers);
 
 /**
  * Register a new user.
@@ -64,6 +65,5 @@ router.patch('/:id', editUserDetails);
  * @throws {Error} If user deletion fails or an error occurs.
  */
 router.delete('/:id', deleteUser);
-
 
 export default router;
