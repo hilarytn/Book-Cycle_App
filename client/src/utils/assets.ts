@@ -6,6 +6,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { AiFillHome } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io';
 import { BiSolidMessageDetail, BiSolidUserCircle } from 'react-icons/bi';
+import { BsFillPencilFill } from 'react-icons/bs';
 
 const images = {
     login: LoginImage,
@@ -18,7 +19,8 @@ const icons = {
     homeIcon: AiFillHome,
     notificationIcon: IoMdNotifications,
     messageIcon: BiSolidMessageDetail,
-    userIcon: BiSolidUserCircle
+    userIcon: BiSolidUserCircle,
+    editIcon: BsFillPencilFill,
 }
 
 export { images, icons }; 

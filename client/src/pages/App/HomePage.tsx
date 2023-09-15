@@ -1,22 +1,17 @@
-import { useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { setCurrentPage } from '../../redux/features/userSlice'
 import PageEnum from '../../utils/enums'
 import { Books, MoreBooks } from '../../components'
+import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 
 const HomePage = () => {
-    const dispatch = useDispatch()
     const [moreBooks, setMoreBooks] = useState<boolean>(false)
-
-    useEffect(() => {
-        dispatch(setCurrentPage(PageEnum.Home))
-    },[dispatch])
+    useSetCurrentPage(PageEnum.Home)
 
   return (
     <>
       <section>
-      <div
+        <div
           className='h-[70vh] w-screen flex justify-center items-center 
                     bg-hero-pattern bg-center bg-cover bg-blend-multiply bg-black/[.50]'
         >

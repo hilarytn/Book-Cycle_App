@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
 import { PrivateRoute, Navbar } from "./components"
-import { LoginPage, HomePage } from "./pages"
+import { LoginPage, HomePage, ProfilePage } from "./pages"
 
 
 const App: React.FC = () => {
@@ -11,11 +11,12 @@ const App: React.FC = () => {
 
   return (
     <div>
-      {isAuthenticated && <Navbar />}
       <Router>
+      {isAuthenticated && <Navbar />}
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
         </Routes>
