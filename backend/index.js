@@ -1,7 +1,7 @@
 import express from 'express';
 import userRoutes from './routes/user.js';
-import users from './routes/miniDB.js';
-import { createUser } from './controllers/user.js';
+//import {registerUser, userLogin} from './controllers/AuthController.js';
+//import { createUser } from './controllers/userController.js';
 //const express = require('express');
 
 dotenv.config();
@@ -10,16 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
-app.use('/user', userRoutes);
+app.use(['/api/user/', '/api/users/'], userRoutes);
 
 app.get('/', (req, res) => {
     res.send('Home Page, Welcome!');
 })
-
-app.get('/users', (req, res) => {
-    console.log(users);
-    res.json(users);
-})
-
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

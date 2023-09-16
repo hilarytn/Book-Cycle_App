@@ -1,6 +1,8 @@
 import express from 'express';
-import { userLogin,
+import {
     registerUser,
+    userLogin } from '../controllers/AuthController'
+import {
     getUserById,
     editUserDetails,
     deleteUser,
