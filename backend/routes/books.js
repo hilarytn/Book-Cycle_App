@@ -7,6 +7,7 @@ import {
   deleteBook,
 } from '../controllers/BookController.js';
 import upload from '../middleware/fileUpload.js';
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ const router = express.Router();
  * @returns {object} List of books
  * @throws {Error} If an error occurs
  */
-router.get('/books', getAllBooks);
+router.get('/books', authenticate, getAllBooks);
 
 /**
  * Get a specific book by ID.
