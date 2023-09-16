@@ -46,8 +46,44 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid credentials" });
         }
         const token = jwt.sign({ email: user.email, id: user._id }, "test", { expiresIn: "1h" });
-        res.status(200).json({ result: user, token });
+        const refreshToken = jwt.sign({ email: user.email, id: user._id }, "test", { expiresIn: "7d" });
+        res.status(200).json({ result: user, token, refreshToken });
     } catch (error) {
         res.status(500).json({error: error.message});   
     }
 };
+
+// @desc    Refresh token
+// @route   POST /api/auth/refresh-token
+// @access  Public
+
+export const refreshToken = async (req, res) => {
+  try {
+    const refreshToken = req.body.refreshToken;
+
+    if (!refreshToken) {
+      return res.status(403).json({ message: 'Access denied. No token provided' });
+    }
+
+    const decoded = await jwt.verify(refreshToken, "test");
+    if (!decoded.id) {
+        return res.status(403).json({ message: 'User ID not found in the token' });
+      }
+
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return res.status(403).json({ message: 'User not found' });
+    }
+
+    const accessToken = jwt.sign({ id: user._id },'test', {expiresIn: '7d'});
+
+    res.json({ accessToken });
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Token expired' });
+    }
+    res.status(401).json({ error: error.message });
+  }
+};
+
