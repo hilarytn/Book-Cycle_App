@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 
 import { images } from "../../utils/assets"
 import { Login } from "../../components"
@@ -14,19 +16,20 @@ const LoginPage = () => {
                 alt="login wallpaper" />
         </div>
         <div className="text-secondary font-serif p-8">
-            <h3 className="font-semibold text-right text-xl">Sign Up</h3>
+            <h3 className="font-semibold text-right text-xl">Sign In</h3>
             <div className="flex flex-col items-center justify-center mt-10">
                 <h1 className="text-2xl font-bold tracking-wide">Log Into Your Account</h1>
                 <h3 className="my-6 font-medium tracking-wider">Connect with others</h3>
             </div>
             <Login />
             <div className="text-center">
-                <p
+                <Link
+                    to="/register"
                     className="text-sm text-black
                     cursor-pointer underline hover:text-secondary
                     font-medium tracking-wide mx-[10%]"
                 >
-                    Click here if you already have an account</p>
+                    Click here if you dont have an account</Link>
             </div>
         </div>
       </div>

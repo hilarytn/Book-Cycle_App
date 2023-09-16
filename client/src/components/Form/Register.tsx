@@ -1,16 +1,16 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { LoginForm } from '../../utils/types/formType';
+import { RegisterForm } from '../../utils/types/formType';
 import { icons } from '../../utils/assets';
-import { loginSchema } from '../../utils/schema'
+import { registerSchema } from '../../utils/schema';
 
-const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
-        resolver: yupResolver(loginSchema)
+const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<RegisterForm>({
+        resolver: yupResolver(registerSchema)
     });
-    const onSubmit: SubmitHandler<LoginForm> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<RegisterForm> = (data) => console.log(data);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const Login = () => {
                     className='absolute mt-[15px] ms-3 text-lg'
                 />
                 <input
-                    className='border-b border-secondary placeholder:text-secondary rounded py-3 px-9'
+                    className='border-b-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                     type="email"
                     id="email"
                     placeholder='Email'
@@ -41,6 +41,19 @@ const Login = () => {
                 />
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>
+            <div className='flex flex-icon'>
+                <icons.passwordIcon
+                    className='absolute mt-[15px] ms-3 text-lg'
+                    />
+                <input
+                    className='border-b-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                    type="confirmPassword"
+                    id="confirmPassword"
+                    placeholder='Confirm Password'
+                    {...register("confirmPassword", { required: true })}
+                />
+                {errors.confirmPassword && <span className='text-red-500'>{errors.confirmPassword.message}</span>}
+            </div>
             <div className='text-center'>
                 <button 
                         className='bg-secondary text-white font-semibold
@@ -54,4 +67,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
