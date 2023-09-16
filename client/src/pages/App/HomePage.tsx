@@ -24,7 +24,7 @@ const HomePage = () => {
             </p>
             <form className='flex gap-3'>
                 <input
-                      className='bg-gray-200 py-4 rounded-md tracking-wider' 
+                      className='bg-gray-200 py-4 rounded-md tracking-wider px-2' 
                       type="search" />
                 <button className='bg-secondary text-white px-4 py-2 rounded-md tracking-wider hover:bg-gray-800 hover:scale-75 delay-100 uppercase'>
                   Search
