@@ -3,10 +3,12 @@ import Logo from '../assets/logo-no-background.svg';
 
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { AiFillHome } from 'react-icons/ai'
-import { IoMdNotifications } from 'react-icons/io';
+import { AiFillHome, AiFillCloseCircle } from 'react-icons/ai'
+import { IoMdNotifications, IoMdAddCircle } from 'react-icons/io';
 import { BiSolidMessageDetail, BiSolidUserCircle } from 'react-icons/bi';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { FiMenu } from 'react-icons/fi';
+
 
 const images = {
     login: LoginImage,
@@ -21,6 +23,9 @@ const icons = {
     messageIcon: BiSolidMessageDetail,
     userIcon: BiSolidUserCircle,
     editIcon: BsFillPencilFill,
+    addIcon: IoMdAddCircle,
+    navIcon: FiMenu,
+    closeIcon: AiFillCloseCircle
 }
 
 export { images, icons }; 

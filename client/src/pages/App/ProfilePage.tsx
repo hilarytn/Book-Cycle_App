@@ -2,6 +2,7 @@ import PageEnum from '../../utils/enums'
 import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 
 import { images, icons } from '../../utils/assets'
+import { UserBooks } from '../../components'
 
 
 const ProfilePage = () => {
@@ -12,22 +13,47 @@ const ProfilePage = () => {
     <>
         <section>
             <div
-                className='h-[60vh] w-screen flex justify-center items-center bg-profile-pattern
-                            bg-cover bg-center bg-no-repeat bg-blend-multiply bg-black/40'
+                className='h-[45vh] w-screen flex justify-center items-center
+                            bg-primary'
             >
             </div>
-            <div className='flex justify-center'>
+            <div>
                 <img
-                    className='w-[250px] h-[250px] rounded-full border-8 border-white absolute top-[47vh] left-[22vw] md:left-[36vw] lg:left-[42vw]'
+                    className='w-[250px] h-[250px] rounded-2xl border-8 border-white absolute top-[35vh] left-[21vw] md:left-[34vw] lg:left-[41vw]'
                     src={images.login} alt="user-profile" />
-                    <button 
-                        className='text-white bg-blue-300 p-2 rounded-lg flex items-center gap-1
-                                    hover:bg-blue-400 hover:scale-105 delay-100 capitalize
-                                      mt-[16vh]  md:mt-[12vh]'>
-                        <icons.editIcon />
-                        <span>change photo</span>
-                    </button>
+                <div className='flex flex-col items-center mt-[20vh] md:mt-[16vh]'>
+                    <h1 className='text-[40px] text-black font-bold tracking-wider capitalize'>
+                        John Doe
+                    </h1>
+                    <p className='text-[16px] text-gray-700 tracking-wider'>
+                      Lagos, Nigeria
+                    </p>
+                </div>
             </div>
+      </section>
+      <section className='my-11 py-6'>
+        <div className='flex items-center justify-center'>
+          <div className='flex flex-col justify-center items-center border-e-2 px-2'>
+            <span className='text-xl md:text-4xl'>200</span>
+            <span className='md:text-lg text-gray-700'>Books Owned</span>
+          </div>
+          <div className='flex flex-col justify-center items-center border-e-2 px-2'>
+            <span className='text-xl md:text-4xl'>200</span>
+            <span className='md:text-lg text-gray-700'>Books Borrowed</span>
+          </div>
+          <div className='flex flex-col justify-center items-center px-2'>
+            <span className='text-xl md:text-4xl'>200</span>
+            <span className='md:text-lg text-gray-700'>Books Returned</span>
+          </div>
+        </div>
+
+        <div className='mt-10 flex flex-col items-center justify-center text-secondary cursor-pointer hover:text-blue-700 delay-100'>
+          <icons.addIcon className='w-16 h-16' />
+          <span className='text-lg tracking-wider'>Add Book</span>
+        </div>
+      </section>
+      <section>
+        <UserBooks />
       </section>
     </>
   )
