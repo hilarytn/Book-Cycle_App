@@ -1,26 +1,25 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import colors from 'colors';
-import bookRoutes from './routes/books.js';
-import connectDB from './config/db.js';
-import authRoutes from './routes/auth.js';
-
+import userRoutes from './routes/user.js';
+import users from './routes/miniDB.js';
+import { createUser } from './controllers/user.js';
+//const express = require('express');
 
 dotenv.config();
-
 connectDB();
-
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
-
-app.use('/api', authRoutes);
-app.use('/api', bookRoutes);
-
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Home Page, Welcome! to Book-Cycle App - API');
-});
+    res.send('Home Page, Welcome!');
+})
+
+app.get('/users', (req, res) => {
+    console.log(users);
+    res.json(users);
+})
+
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
