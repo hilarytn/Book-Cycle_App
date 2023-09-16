@@ -17,9 +17,9 @@ const ProfilePage = () => {
                             bg-primary'
             >
             </div>
-            <div>
+            <div className='flex justify-center'>
                 <img
-                    className='w-[250px] h-[250px] rounded-2xl border-8 border-white absolute top-[35vh] left-[21vw] md:left-[34vw] lg:left-[41vw]'
+                    className='w-[250px] h-[250px] rounded-2xl border-8 border-white absolute top-[35vh]'
                     src={images.login} alt="user-profile" />
                 <div className='flex flex-col items-center mt-[20vh] md:mt-[16vh]'>
                     <h1 className='text-[40px] text-black font-bold tracking-wider capitalize'>
@@ -33,17 +33,17 @@ const ProfilePage = () => {
       </section>
       <section className='my-11 py-6'>
         <div className='flex items-center justify-center'>
-          <div className='flex flex-col justify-center items-center border-e-2 px-2'>
+          <div className='flex flex-col justify-center items-center border-e-2'>
             <span className='text-xl md:text-4xl'>200</span>
-            <span className='md:text-lg text-gray-700'>Books Owned</span>
+            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Owned</span>
           </div>
-          <div className='flex flex-col justify-center items-center border-e-2 px-2'>
+          <div className='flex flex-col justify-center items-center border-e-2'>
             <span className='text-xl md:text-4xl'>200</span>
-            <span className='md:text-lg text-gray-700'>Books Borrowed</span>
+            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Borrowed</span>
           </div>
-          <div className='flex flex-col justify-center items-center px-2'>
+          <div className='flex flex-col justify-center items-center'>
             <span className='text-xl md:text-4xl'>200</span>
-            <span className='md:text-lg text-gray-700'>Books Returned</span>
+            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Returned</span>
           </div>
         </div>
 
