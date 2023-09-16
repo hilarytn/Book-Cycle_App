@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 // @desc    Register a new user
 // @route   POST /api/auth/register
 // @access  Public
-export const registerUser = async (req, res) => {
+export const register = async (req, res) => {
     try {
         const { username, email, password, firstName, lastName, phoneNumber, address } = req.body;
         const existingUser = await User.findOne({ email });
