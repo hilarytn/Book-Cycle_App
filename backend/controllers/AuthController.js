@@ -101,3 +101,94 @@ export const refreshToken = async (req, res) => {
   }
 };
 
+// @desc    retrieve user info
+// @route   GET /api/auth/user
+// @access  Private
+
+export const getUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({error: error.message});   
+    }
+}
+
+// @desc    update user info
+// @route   PUT /api/auth/user
+// @access  Private
+
+export const updateUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const { username, email, firstName, lastName, phoneNumber, address } = req.body;
+        user.username = username || user.username;
+        user.email = email || user.email;
+        user.firstName = firstName || user.firstName;
+        user.lastName = lastName || user.lastName;
+        user.phoneNumber = phoneNumber || user.phoneNumber;
+        user.address = address || user.address;
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({error: error.message});   
+    }
+};
+
+// @desc    update user password
+// @route   PUT /api/auth/user/password
+// @access  Private
+
+export const updateUserPassword = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const { password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 12);
+        user.password = hashedPassword || user.password;
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({error: error.message});   
+    }
+};
+
+// @desc    delete user
+// @route   DELETE /api/auth/user
+// @access  Private
+
+export const deleteUser = async (req, res) => {
+    try {
+        const user = await User.findByIdAndRemove(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({error: error.message});   
+    }
+};
+
+// @desc    get all users
+// @route   GET /api/auth/users
+// @access  Private
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        if (!users) {
+            return res.status(404).json({ message: "Users not found" });
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({error: error.message});   
+    }
+};
