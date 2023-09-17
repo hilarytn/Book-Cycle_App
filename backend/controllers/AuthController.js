@@ -45,8 +45,18 @@ export const login = async (req, res) => {
         if (!isPasswordValid) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
-        const token = jwt.sign({ email: user.email, id: user._id }, "test", { expiresIn: "1h" });
-        const refreshToken = jwt.sign({ email: user.email, id: user._id }, "test", { expiresIn: "7d" });
+        const token = jwt.sign(
+            { email: user.email, id: user._id }, 
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: process.env.ACCESS_TOKEN_EXPIRE }
+             );
+
+        const refreshToken = jwt.sign(
+            { email: user.email, id: user._id },
+            process.env.REFRESH_TOKEN_SECRET, 
+            { expiresIn: process.env.REFRESH_TOKEN_EXPIRE }
+            );
+
         res.status(200).json({ result: user, token, refreshToken });
     } catch (error) {
         res.status(500).json({error: error.message});   
@@ -65,7 +75,7 @@ export const refreshToken = async (req, res) => {
       return res.status(403).json({ message: 'Access denied. No token provided' });
     }
 
-    const decoded = await jwt.verify(refreshToken, "test");
+    const decoded = await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     if (!decoded.id) {
         return res.status(403).json({ message: 'User ID not found in the token' });
       }
@@ -76,7 +86,11 @@ export const refreshToken = async (req, res) => {
       return res.status(403).json({ message: 'User not found' });
     }
 
-    const accessToken = jwt.sign({ id: user._id },'test', {expiresIn: '7d'});
+    const accessToken = jwt.sign(
+        { id: user._id }, 
+        process.env.ACCESS_TOKEN_SECRET, 
+        {expiresIn: process.env.ACCESS_TOKEN_EXPIRE}
+        );
 
     res.json({ accessToken });
   } catch (error) {
