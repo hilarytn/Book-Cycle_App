@@ -32,14 +32,19 @@ export const createBook = async (req, res) => {
 
 export const getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find();
-    if(!books) {
-      res.status(404).json({error: 'Books not found!'})
-    }
-    res.status(200).json(books);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const options = {
+      page,
+      limit,
+      populate: 'owner',
+      sort: { createdAt: -1 }
+    };
+    const result = await Book.paginate({}, options);
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
-    
   }
 };
 

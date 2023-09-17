@@ -22,7 +22,7 @@ const router = express.Router();
  * @returns {object} List of books
  * @throws {Error} If an error occurs
  */
-router.get('/books', authenticate, getAllBooks);
+router.get('/books'/*, authenticate*/, getAllBooks);
 
 /**
  * Get a specific book by ID.
