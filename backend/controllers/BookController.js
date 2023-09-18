@@ -1,47 +1,58 @@
-import Book from "../models/Book.js";
-import path from "path";
+import path from 'path';
+import Book from '../models/Book.js';
 
 export const createBook = async (req, res) => {
   try {
-        const { title, author, genre, description, condition, availabilityStatus } = req.body;
-        const existingBook = await Book.findOne({ title });
+    const {
+      title, author, genre, description, condition, availabilityStatus,
+    } = req.body;
+    const existingBook = await Book.findOne({ title });
 
-        if (existingBook) {
-          return res.status(400).json({ error: 'Book already exists' });
-        }
-        if(req.file) {
-          const coverArtUrl = req.file.path;
-        }
-        const book = new Book({
-          title,
-          author,
-          genre,
-          description,
-          condition,
-          availabilityStatus,
-          coverArtUrl,
-          owner: req.user._id,
-        });
+    if (existingBook) {
+      return res.status(400).json({ error: 'Book already exists' });
+    }
+    if (req.file) {
+      const coverArtUrl = req.file.path;
+    }
+    const book = new Book({
+      title,
+      author,
+      genre,
+      description,
+      condition,
+      availabilityStatus,
+      coverArtUrl,
+      owner: req.user._id,
+    });
 
-        const savedBook = await book.save();
-        res.status(201).json(savedBook);
-      } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
-      }
-    };
+    const savedBook = await book.save();
+    res.status(201).json(savedBook);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 export const getAllBooks = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const searchQuery = req.query.search;
 
-    const options = {
+    const searchOptions = {
       page,
       limit,
       populate: 'owner',
-      sort: { createdAt: -1 }
+      sort: { createdAt: -1 },
     };
-    const result = await Book.paginate({}, options);
+    const query = {};
+    if (searchQuery) {
+      query.$or = [
+        { title: { $regex: searchQuery, $options: 'i' } },
+        { author: { $regex: searchQuery, $options: 'i' } },
+        { genre: { $regex: searchQuery, $options: 'i' } },
+      ];
+    }
+    const result = searchQuery ? await Book.paginate(query, searchOptions) : await Book.paginate({}, searchOptions);
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
@@ -51,8 +62,8 @@ export const getAllBooks = async (req, res) => {
 export const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
-    if(!book) {
-      res.status(404).json({error: 'Book not found'});
+    if (!book) {
+      res.status(404).json({ error: 'Book not found' });
     }
     res.status(200).json(book);
   } catch (error) {

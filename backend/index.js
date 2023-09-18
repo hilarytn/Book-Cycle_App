@@ -4,7 +4,7 @@ import colors from 'colors';
 import bookRoutes from './routes/books.js';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
-
+import swapRoutes from './routes/swaps.js';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use('/api', authRoutes);
 app.use('/api', bookRoutes);
-
+app.use('/api', swapRoutes);
 
 app.get('/', (req, res) => {
   res.send('Home Page, Welcome! to Book-Cycle App - API');
