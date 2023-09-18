@@ -39,24 +39,34 @@ To use the Book Cycle Application:
 4. Connect with other users to arrange book transactions.
 
 ### API Endpoints
-* User Management:
+1. User Management:
 
     * `POST /api/users/register`: Register a new user.
     * `POST /api/users/login`: Log in as a registered user.
     * `GET /api/users/profile`: Retrieve user profile information.
     * `PUT /api/users/profile`: Update user profile information.
-* Book Management:
+2. Book Management:
 
     * `GET /api/books`: Retrieve a list of available books.
     * `GET /api/books/:id`: Retrieve details of a specific book.
     * `POST /api/books`: Create a new book listing.
     * `PUT /api/books/:id`: Update book listing details.
     * `DELETE /api/books/:id`: Delete a book listing.
-* Authentication and Authorization:
+
+3. Authentication and Authorization:
 
     * `POST /api/auth/refresh`: Refresh access tokens.
     * `POST /api/auth/logout`: Log out and invalidate tokens.
-* Miscellaneous:
+
+4. Book Swapping:
+
+    * `POST /api/swaps`: Initiate a book swap request.
+    * `GET /api/swaps`: Get a list of pending swap requests.
+    * `PUT /api/swaps/:id/accept`: Accept a swap request.
+    * `PUT /api/swaps/:id/reject`: Reject a swap request.
+    * `GET /api/swaps/history`: Get a history of completed swaps.
+
+5. Miscellaneous:
 
     * `GET /`: Home page of the Book Cycle Application.
 
@@ -64,6 +74,7 @@ To use the Book Cycle Application:
 * Node.js
 * Express.js
 * MongoDB
+* Websockets (Socket.io)
 * React.js (for the front end)
 * JSON Web Tokens (JWT) for authentication
 * Axios (for making API requests)
