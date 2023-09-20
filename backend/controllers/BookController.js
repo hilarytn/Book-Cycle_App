@@ -11,8 +11,11 @@ export const createBook = async (req, res) => {
     if (existingBook) {
       return res.status(400).json({ error: 'Book already exists' });
     }
+
+    let coverArtUrl = '';
+
     if (req.file) {
-      const coverArtUrl = req.file.path;
+      coverArtUrl = req.file.path;
     }
     const book = new Book({
       title,
@@ -22,13 +25,13 @@ export const createBook = async (req, res) => {
       condition,
       availabilityStatus,
       coverArtUrl,
-      owner: req.user._id,
+      //owner: req.user._id,
     });
 
     const savedBook = await book.save();
     res.status(201).json(savedBook);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -45,6 +48,7 @@ export const getAllBooks = async (req, res) => {
       sort: { createdAt: -1 },
     };
     const query = {};
+
     if (searchQuery) {
       query.$or = [
         { title: { $regex: searchQuery, $options: 'i' } },
@@ -53,8 +57,12 @@ export const getAllBooks = async (req, res) => {
       ];
     }
     const result = searchQuery ? await Book.paginate(query, searchOptions) : await Book.paginate({}, searchOptions);
-    res.status(200).json(result);
-  } catch (error) {
+    res.status(200).json(
+      {success: true,
+      message: "Books fetched successfully",
+      data: result});
+  }
+  catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
 };

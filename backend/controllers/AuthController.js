@@ -57,6 +57,18 @@ export const login = async (req, res) => {
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: process.env.REFRESH_TOKEN_EXPIRE },
     );
+    res.cookie('token', token, {
+      httpOnly: true,
+      path: '/api/auth/login',
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      });
+      
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      path: '/api/auth/refresh-token',
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    });
+
 
     res.status(200).json({ result: user, token, refreshToken });
   } catch (error) {

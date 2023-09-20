@@ -14,6 +14,9 @@ export const authenticate = async(req, res, next) => {
         if(error.name === 'TokenExpiredError') {
             return res.status(401).json({error: error.message});   
         }
-        res.status(401).json({message: "token is not valid."});   
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: "Invalid token" });
+        }
+        res.status(500).json({ message: "Internal server error" });  
     }
 }

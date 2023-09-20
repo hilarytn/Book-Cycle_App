@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import bookRoutes from './routes/books.js';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
-import swapRoutes from './routes/swaps.js';
+import swapRoutes from './routes/swap.js';
 
 dotenv.config();
 
@@ -14,6 +16,8 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
 
 app.use('/api', authRoutes);
 app.use('/api', bookRoutes);

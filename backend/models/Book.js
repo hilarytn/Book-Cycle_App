@@ -4,11 +4,28 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 const { Schema } = mongoose;
 
 const bookSchema = new Schema({
-  title: String,
-  author: String,
-  genre: String,
-  description: String,
-  condition: String,
+  title: {
+    type: String,
+    required: true,
+  },
+
+  author: {
+    type: String,
+    required: true,
+  },
+
+  genre: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  condition: {
+    type: String,
+    required: true,
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -16,6 +33,7 @@ const bookSchema = new Schema({
   availabilityStatus: String,
   coverArtUrl: {
     type: String,
+    required: true,
   },
 }, { timestamps: true });
 

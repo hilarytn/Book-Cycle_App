@@ -21,6 +21,7 @@ const router = express.Router();
  * @route GET /books
  * @returns {object} List of books
  * @throws {Error} If an error occurs
+ * 
  */
 router.get('/books', authenticate, getAllBooks);
 
@@ -42,7 +43,7 @@ router.get('/books/:id', getBookById);
  * @returns {object} The created book.
  * @throws {Error} If the request is invalid or an error occurs.
  */
-router.post('/books', upload.single('coverArtUrl'), createBook);
+router.post('/books', authenticate, upload.single('coverArtUrl'), createBook);
 
 /**
  * Update a specific book by ID.
