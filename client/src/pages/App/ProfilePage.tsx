@@ -2,7 +2,7 @@ import PageEnum from '../../utils/enums'
 import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 
 import { images, icons } from '../../utils/assets'
-import { UserBooks } from '../../components'
+import { UserBooks, Navbar } from '../../components'
 
 
 const ProfilePage = () => {
@@ -11,6 +11,7 @@ const ProfilePage = () => {
 
   return (
     <>
+      <Navbar />
         <section>
             <div
                 className='h-[45vh] w-screen flex justify-center items-center

@@ -1,16 +1,22 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 
+
 import { LoginForm } from '../../utils/types/formType';
 import { icons } from '../../utils/assets';
 import { loginSchema } from '../../utils/schema'
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+
+    const { loginUser } = useAuth();
 
     const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
         resolver: yupResolver(loginSchema)
     });
-    const onSubmit: SubmitHandler<LoginForm> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+        loginUser(data);
+    };
 
   return (
     <div>

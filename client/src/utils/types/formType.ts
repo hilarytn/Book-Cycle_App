@@ -6,14 +6,13 @@ type LoginForm = {
 
 type RegisterForm = {
     email: string
+    username: string
     password: string
     confirmPassword: string
     firstName: string
     lastName: string
     phoneNumber: string
     address: string
-    location: string
-    image: string
 }
 
 

@@ -6,8 +6,10 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { AiFillHome, AiFillCloseCircle } from 'react-icons/ai'
 import { IoMdNotifications, IoMdAddCircle } from 'react-icons/io';
 import { BiSolidMessageDetail, BiSolidUserCircle } from 'react-icons/bi';
-import { BsFillPencilFill } from 'react-icons/bs';
+import { BsFillPencilFill, BsTelephonePlusFill, BsPersonVcardFill } from 'react-icons/bs';
 import { FiMenu } from 'react-icons/fi';
+import { FaUserCircle } from 'react-icons/fa';
+import { FaLocationDot } from 'react-icons/fa6'
 
 
 const images = {
@@ -25,7 +27,11 @@ const icons = {
     editIcon: BsFillPencilFill,
     addIcon: IoMdAddCircle,
     navIcon: FiMenu,
-    closeIcon: AiFillCloseCircle
+    closeIcon: AiFillCloseCircle,
+    profileIcon: FaUserCircle,
+    locationIcon: FaLocationDot,
+    phoneIcon: BsTelephonePlusFill,
+    identityIcon: BsPersonVcardFill
 }
 
 export { images, icons }; 

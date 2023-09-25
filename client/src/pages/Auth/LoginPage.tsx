@@ -6,6 +6,7 @@ import { Login } from "../../components"
 
 
 const LoginPage = () => {
+
   return (
     <div className="h-screen w-screen bg-primary flex justify-center items-center">
       <div className="md:flex w-screen md:w-max bg-white">
@@ -29,7 +30,7 @@ const LoginPage = () => {
                     cursor-pointer underline hover:text-secondary
                     font-medium tracking-wide mx-[10%]"
                 >
-                    Click here if you dont have an account</Link>
+                    Create an account with us</Link>
             </div>
         </div>
       </div>

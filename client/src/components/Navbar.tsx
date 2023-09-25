@@ -20,8 +20,8 @@ const Navbar = () => {
     
 
   return (
-    <header className="fixed top-0 w-full bg-primary">
-        <nav className="flex justify-between md:justify-around items-center w-[100%] px-8 py-3">
+    <header className="fixed top-0 w-screen bg-primary">
+        <nav className="flex justify-around items-center px-8 py-3">
             <div>
                 <img
                     className="w-[120px]"
@@ -85,6 +85,7 @@ const Navbar = () => {
 
             {/* nav drop down */}
             <div
+                className='md:hidden'
                 onClick={() => toggleDropDown()}
             >
                 {!dropDown ? (

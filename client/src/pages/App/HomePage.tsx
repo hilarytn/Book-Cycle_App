@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import PageEnum from '../../utils/enums'
-import { Books, MoreBooks } from '../../components'
+import { Books, MoreBooks, Navbar } from '../../components'
 import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 
 const HomePage = () => {
@@ -10,9 +10,10 @@ const HomePage = () => {
 
   return (
     <>
+      <Navbar />
       <section>
         <div
-          className='h-[70vh] w-screen flex justify-center items-center 
+          className='h-[70vh] flex justify-center items-center 
                     bg-hero-pattern bg-center bg-cover bg-blend-multiply bg-black/[.50]'
         >
           <div className='flex flex-col justify-center items-center gap-8'>

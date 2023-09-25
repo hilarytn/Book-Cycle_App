@@ -1,18 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
-import { PrivateRoute, Navbar } from "./components"
+import { PrivateRoute } from "./components"
 import { LoginPage, HomePage, ProfilePage, RegisterPage } from "./pages"
 
 
 const App: React.FC = () => {
 
-  const isAuthenticated = false;
 
   return (
     <div>
       <Router>
-      {isAuthenticated && <Navbar />}
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<HomePage />} />
