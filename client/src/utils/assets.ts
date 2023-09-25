@@ -10,6 +10,7 @@ import { BsFillPencilFill, BsTelephonePlusFill, BsPersonVcardFill } from 'react-
 import { FiMenu } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6'
+import { IoLogOutSharp } from 'react-icons/io5'
 
 
 const images = {
@@ -31,7 +32,8 @@ const icons = {
     profileIcon: FaUserCircle,
     locationIcon: FaLocationDot,
     phoneIcon: BsTelephonePlusFill,
-    identityIcon: BsPersonVcardFill
+    identityIcon: BsPersonVcardFill,
+    logoutIcon: IoLogOutSharp
 }
 
 export { images, icons }; 

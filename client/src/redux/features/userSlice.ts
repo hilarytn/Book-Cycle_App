@@ -27,11 +27,15 @@ export const userSlice = createSlice({
         state.refreshToken = action.payload.refreshToken
         localStorage.setItem('token', action.payload.token)
         localStorage.setItem('refreshToken', action.payload.refreshToken)
+    },
+    logoutUser: (state) => {
+        state.token = null
+        state.refreshToken = null
     }
   },
 })
 
-export const { setCurrentPage, setUser, setToken } = userSlice.actions
+export const { setCurrentPage, setUser, setToken, logoutUser } = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPage = (state: RootState) => state.user.currentPage

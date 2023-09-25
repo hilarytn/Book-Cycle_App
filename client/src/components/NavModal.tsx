@@ -3,12 +3,13 @@ import { icons } from "../utils/assets"
 import PageEnum from '../utils/enums'
 import { selectPage } from '../redux/features/userSlice'
 import { useSelector } from 'react-redux' 
-
+import useAuth from "../hooks/useAuth"
 
 
 const NavModal = () => {
 
     const page = useSelector(selectPage)
+    const { logout } = useAuth()
     const activeStyling = 'flex justify-center bg-secondary text-white px-4 py-2 tracking-wider uppercase flex items-center gap-1 tracking-wider cursor-pointer'
 
   return (
@@ -56,6 +57,16 @@ const NavModal = () => {
                             />
                             Profile
                         </Link>
+                    </li>
+                    <li
+                        onClick={() => logout()}
+                    >
+                        <div className="flex items-center justify-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100">
+                            <icons.logoutIcon
+                                className='text-lg'
+                            />
+                            Logout
+                        </div>
                     </li>
                 </ul>
     </div>

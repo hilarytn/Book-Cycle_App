@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux' 
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-
 import { selectPage } from '../redux/features/userSlice'
+
 import { images, icons } from '../utils/assets'
 import PageEnum from '../utils/enums'
 import { NavModal } from '.'
+import useAuth from '../hooks/useAuth'
 
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
     const page = useSelector(selectPage)
     const activeStyling = 'bg-secondary text-white px-4 py-2 tracking-wider uppercase flex items-center gap-1 tracking-wider cursor-pointer'
     const [dropDown, setDropDown] = useState(false)
+    const { logout } = useAuth()
 
     const toggleDropDown = () => {
         setDropDown(!dropDown)
@@ -75,7 +77,9 @@ const Navbar = () => {
                         </li>
                 </ul>
             </div>
-            <div className='hidden md:block'>
+            <div
+                onClick={() => logout()} 
+                className='hidden md:block'>
                 <button 
                     className='bg-black text-white px-4 py-2 rounded-md tracking-wider hover:bg-gray-800 hover:scale-75 delay-100 uppercase'
                     >
