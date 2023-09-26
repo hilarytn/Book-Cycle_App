@@ -22,8 +22,8 @@ const Navbar = () => {
     
 
   return (
-    <header className="fixed top-0 w-screen bg-primary">
-        <nav className="flex justify-around items-center px-8 py-3">
+    <header className="fixed top-0 w-full bg-primary">
+        <nav className="flex justify-around items-center py-3">
             <div>
                 <img
                     className="w-[120px]"
@@ -31,7 +31,7 @@ const Navbar = () => {
                     alt="nav icon" />
             </div>
             <div>
-                <ul className='hidden md:flex justify-center items-center gap-3 lg:gap-[3vw] text-[14px] text-black'>
+                <ul className='hidden lg:flex justify-center items-center gap-3 lg:gap-[3vw] text-[14px] text-black'>
                     <li>
                             <Link
                                 className={page === PageEnum.Home ? activeStyling :`flex items-center gap-1 tracking-wider cursor-pointer hover:bg-secondary hover:text-white hover:p-2 rounded-md uppercase delay-100`}
@@ -79,7 +79,7 @@ const Navbar = () => {
             </div>
             <div
                 onClick={() => logout()} 
-                className='hidden md:block'>
+                className='hidden lg:block'>
                 <button 
                     className='bg-black text-white px-4 py-2 rounded-md tracking-wider hover:bg-gray-800 hover:scale-75 delay-100 uppercase'
                     >
@@ -89,16 +89,16 @@ const Navbar = () => {
 
             {/* nav drop down */}
             <div
-                className='md:hidden'
+                className='lg:hidden'
                 onClick={() => toggleDropDown()}
             >
                 {!dropDown ? (
-                    <button className='md:hidden text-3xl'>
+                    <button className='lg:hidden text-3xl'>
                         <icons.navIcon
                         />
                     </button>
                 ) : (
-                    <button className='md:hidden text-3xl'>
+                    <button className='lg:hidden text-3xl'>
                         <icons.closeIcon
                         />
                     </button>
