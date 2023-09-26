@@ -1,11 +1,9 @@
-import { useState } from 'react'
 
 import PageEnum from '../../utils/enums'
-import { Books, MoreBooks, Navbar } from '../../components'
+import { Users, Navbar } from '../../components'
 import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 
 const HomePage = () => {
-    const [moreBooks, setMoreBooks] = useState<boolean>(false)
     useSetCurrentPage(PageEnum.Home)
 
   return (
@@ -35,11 +33,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {moreBooks ? (
-        <MoreBooks setMoreBooks={setMoreBooks} />
-      ) : (
-        <Books setMoreBooks={setMoreBooks}/>
-      )}
+      <Users />
     </>
   )
 }

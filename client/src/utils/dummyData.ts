@@ -9,45 +9,96 @@ export const dummyUser = {
     imgae: Default,
 }
 
-export const dummyBooks = [
+export const dummyUsers = [
     {
-        id: 1,
-        title: "The Lord of the Rings",
-        author: "J.R.R. Tolkien",
-        owner: "John Doe",
-        coverUrl: Default,
-        genre: "Fantasy",
-        condition: "Good",
-        description: "The Lord of the Rings is an epic high-fantasy novel written by English author and scholar J. R. R. Tolkien. The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.",
+      id: 1,
+      firstName: "John",
+      lastName: "Doe",
+      username: "Dizzy",
+      image: Default,
+      location: "Kasoa",
+      books: 15
     },
     {
-        id: 2,
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        owner: "John Doe",
-        coverUrl: Default,
-        genre: "Fantasy",
-        condition: "Good",
-        description: "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction.",
+      id: 2,
+      firstName: "Jane",
+      lastName: "Smith",
+      username: "JSmith",
+      image: Default,
+      location: "New York",
+      books: 20
     },
     {
-        id: 3,
-        title: "The Silmarillion",
-        author: "J.R.R. Tolkien",
-        owner: "John Doe",
-        coverUrl: Default,
-        genre: "Fantasy",
-        condition: "Good",
-        description: "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay.",
+      id: 3,
+      firstName: "Michael",
+      lastName: "Johnson",
+      username: "MJohnson",
+      image: Default,
+      location: "Los Angeles",
+      books: 18
     },
     {
-        id: 4,
-        title: "The Lord of the Rings",
-        author: "J.R.R. Tolkien",
-        owner: "John Doe",
-        coverUrl: Default,
-        genre: "Fantasy",
-        condition: "Good",
-        description: "The Lord of the Rings is an epic high-fantasy novel written by English author and scholar J. R. R. Tolkien. The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.",
+      id: 4,
+      firstName: "Anna",
+      lastName: "Brown",
+      username: "ABrown",
+      image: Default,
+      location: "London",
+      books: 12
     },
-]
+    {
+      id: 5,
+      firstName: "David",
+      lastName: "Clark",
+      username: "DClark",
+      image: Default,
+      location: "Toronto",
+      books: 25
+    },
+    {
+      id: 6,
+      firstName: "Sarah",
+      lastName: "Taylor",
+      username: "STaylor",
+      image: Default,
+      location: "Sydney",
+      books: 17
+    },
+    {
+      id: 7,
+      firstName: "Alex",
+      lastName: "Garcia",
+      username: "AGarcia",
+      image: Default,
+      location: "Madrid",
+      books: 22
+    },
+    {
+      id: 8,
+      firstName: "Chris",
+      lastName: "Robinson",
+      username: "CRobinson",
+      image: Default,
+      location: "Berlin",
+      books: 14
+    },
+    {
+      id: 9,
+      firstName: "Laura",
+      lastName: "Hill",
+      username: "LHill",
+      image: Default,
+      location: "Paris",
+      books: 19
+    },
+    {
+      id: 10,
+      firstName: "Mark",
+      lastName: "White",
+      username: "MWhite",
+      image: Default,
+      location: "Tokyo",
+      books: 16
+    }
+  ];
+  
