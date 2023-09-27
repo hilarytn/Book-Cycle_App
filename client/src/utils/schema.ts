@@ -22,12 +22,12 @@ const registerSchema = yup
 
 const editProfileSchema = yup
     .object({
-        email: yup.string().email(),
-        username: yup.string(),
-        firstName: yup.string(),
-        lastName: yup.string(),
-        phoneNumber: yup.string(),
-        address: yup.string(),
+        email: yup.string().email().required(),
+        username: yup.string().required(),
+        firstName: yup.string().required(),
+        lastName: yup.string().required(),
+        phoneNumber: yup.string().required(),
+        address: yup.string().required(),
     })
 
 export {
