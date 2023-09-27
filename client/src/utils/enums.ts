@@ -4,6 +4,7 @@ enum PageEnum {
     Messaging = 'MESSAGING',
     Notification = 'NOTIFICATION',
     Profile = 'PROFILE',
+    UserDetail = 'USER_DETAIL',
 }
 
 export default PageEnum;

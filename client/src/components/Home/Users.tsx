@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const Users = () => {
   const { loading } = useUser();
   const users = useSelector(selectUsers);
+  console.log(users);
 
   return (
     <section>
@@ -27,8 +28,8 @@ const Users = () => {
       ) : (
         <div className="container mx-auto py-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {users.map((user: User) => (
-              <div key={user.id} className="p-4 bg-white rounded-lg shadow-lg">
+            {users.map((user: User, index) => (
+              <div key={index} className="p-4 bg-white rounded-lg shadow-lg">
                 <div className="text-center">
                   <img src={Default} alt="Profile Image" className="rounded-full h-40 w-40 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold">{`${user.firstName} ${user.lastName}`}</h3>
@@ -43,7 +44,7 @@ const Users = () => {
                 </div>
                 <div className="mt-4 text-center">
                   <Link
-                        to={`/profile/${user.id}`}
+                        to={`/user/${user._id}`}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                     View Profile
                   </Link>

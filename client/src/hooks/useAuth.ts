@@ -4,7 +4,7 @@ import useAxios from './useAxios';
 import useNotification from './useNotification';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setToken, setUser, logoutUser } from '../redux/features/userSlice';
+import { setToken, setAuthUser, logoutUser } from '../redux/features/userSlice';
 import { AppDispatch } from '../redux/store';
 
 
@@ -31,7 +31,7 @@ const useAuth = () => {
         axiosInstance.post('/user/login', data)
             .then(res => {
                 showSuccess(`logged in successfully!`)
-                dispatch(setUser(res.data.result))
+                dispatch(setAuthUser(res.data.result))
                 dispatch(setToken({
                     token: res.data.token,
                     refreshToken: res.data.refreshToken

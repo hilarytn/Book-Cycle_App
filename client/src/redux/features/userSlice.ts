@@ -8,6 +8,7 @@ import { InitState, User, Token } from '../../utils/types/state'
 const initialState: InitState = {
     currentPage: '',
     user: null,
+    authUser: null,
     token: localStorage.getItem('token') || null,
     refreshToken: localStorage.getItem('refreshToken') || null
 }
@@ -18,6 +19,9 @@ export const userSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action: PayloadAction<string>) => {
         state.currentPage = action.payload
+    },
+    setAuthUser: (state, action: PayloadAction<User>) => {
+        state.authUser = action.payload
     },
     setUser: (state, action: PayloadAction<User>) => {
         state.user = action.payload
@@ -31,13 +35,16 @@ export const userSlice = createSlice({
     logoutUser: (state) => {
         state.token = null
         state.refreshToken = null
+        state.authUser = null
     }
   },
 })
 
-export const { setCurrentPage, setUser, setToken, logoutUser } = userSlice.actions
+export const { setCurrentPage, setUser, setToken, logoutUser,setAuthUser } = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPage = (state: RootState) => state.user.currentPage
 export const selectToken = (state: RootState) => state.user.token
+export const selectAuthUser = (state: RootState) => state.user.authUser
+export const selectUser = (state: RootState) => state.user.user
 export default userSlice.reducer

@@ -12,6 +12,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoLogOutSharp } from 'react-icons/io5'
 import { ImBooks } from 'react-icons/im'
+import { CgArrowLongRightC } from 'react-icons/cg'
 
 
 const images = {
@@ -35,7 +36,8 @@ const icons = {
     phoneIcon: BsTelephonePlusFill,
     identityIcon: BsPersonVcardFill,
     logoutIcon: IoLogOutSharp,
-    bookIcon: ImBooks
+    bookIcon: ImBooks,
+    arrowIcon: CgArrowLongRightC
 }
 
 export { images, icons }; 

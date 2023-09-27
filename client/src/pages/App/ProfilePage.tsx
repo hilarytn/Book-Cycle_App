@@ -1,63 +1,64 @@
 import PageEnum from '../../utils/enums'
 import useSetCurrentPage from '../../hooks/useSetCurrentPage'
-
-import { images, icons } from '../../utils/assets'
-import { UserBooks, Navbar } from '../../components'
+import { icons } from '../../utils/assets'
+import { Navbar } from '../../components'
+import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
+import { useSelector } from 'react-redux';
+import { selectAuthUser } from '../../redux/features/userSlice';
 
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
+    const user = useSelector(selectAuthUser)
+    console.log(user)
 
-  return (
-    <>
-      <Navbar />
-        <section>
-            <div
-                className='h-[45vh] w-screen flex justify-center items-center
-                            bg-primary'
-            >
-            </div>
-            <div className='flex justify-center'>
-                <img
-                    className='w-[250px] h-[250px] rounded-2xl border-8 border-white absolute top-[35vh]'
-                    src={images.login} alt="user-profile" />
-                <div className='flex flex-col items-center mt-[20vh] md:mt-[16vh]'>
-                    <h1 className='text-[40px] text-black font-bold tracking-wider capitalize'>
-                        John Doe
-                    </h1>
-                    <p className='text-[16px] text-gray-700 tracking-wider'>
-                      Lagos, Nigeria
-                    </p>
-                </div>
-            </div>
-      </section>
-      <section className='my-11 py-6'>
-        <div className='flex items-center justify-center'>
-          <div className='flex flex-col justify-center items-center border-e-2'>
-            <span className='text-xl md:text-4xl'>200</span>
-            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Owned</span>
+    return (
+      <>
+          <Navbar />
+          <div className='flex flex-col items-center my-[10rem]'>
+              <div className='flex flex-wrap items-center justify-center gap-10'>
+                  <div>
+                      <img src={Default} alt="Profile Image" className="rounded-full h-[150px] w-[150px] mx-auto mb-4" />
+                  </div>
+                  <div className='flex flex-col text-center gap-3 text-gray-700'>
+                      <h2 className='text-[24px] tracking-wide'>{user?.firstName} {user?.lastName}</h2>
+                      <div className='flex flex-wrap items-center justify-center gap-10'>
+                          <div className='flex items-center justify-center gap-2'>
+                              <icons.locationIcon/>
+                              <p>{user?.address}</p>
+                          </div>
+                          <div className='flex items-center justify-center gap-2'>
+                              <icons.emailIcon/>
+                              <p>{user?.email}</p>
+                          </div>
+                      </div>
+                      <div className='flex justify-center gap-4 items-center'>
+                          <button className='bg-blue-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Edit Profile</button>
+                          <button className='bg-green-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Add Book</button>
+                      </div>
+                  </div>
+              </div>
+  
+  
+              <div className='flex lg:flex-row flex-col gap-10 justify-center my-[4rem]'>
+                  <div className='flex h-fit items-center gap-2 mt-10 text-gray-700 text-[27px]'>
+                      <p>Books ({user?.books.length})</p>
+                      <icons.arrowIcon
+                          className='transform rotate-90 lg:rotate-0'
+                      />
+                  </div>
+                  <div className='grid gap-5 grid-cols-2 lg:grid-cols-4'>
+                      {user && user.books.length > 0 ? user.books.map((book, index) => (
+                          <img key={index} className='w-[250px] h-[250px]' src={book.coverArtUrl} alt="Books" />
+                      )) : (
+                          <p className='lg:mt-9 text-red-700 col-span-2 text-[30px]'>User has no books</p>
+                      )}
+                  </div>
+              </div>
           </div>
-          <div className='flex flex-col justify-center items-center border-e-2'>
-            <span className='text-xl md:text-4xl'>200</span>
-            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Borrowed</span>
-          </div>
-          <div className='flex flex-col justify-center items-center'>
-            <span className='text-xl md:text-4xl'>200</span>
-            <span className='text-sm md:text-lg text-gray-700 mx-2'>Books Returned</span>
-          </div>
-        </div>
-
-        <div className='mt-10 flex flex-col items-center justify-center text-secondary cursor-pointer hover:text-blue-700 delay-100'>
-          <icons.addIcon className='w-16 h-16' />
-          <span className='text-lg tracking-wider'>Add Book</span>
-        </div>
-      </section>
-      <section>
-        <UserBooks />
-      </section>
-    </>
-  )
+      </>
+    )
 }
 
 export default ProfilePage

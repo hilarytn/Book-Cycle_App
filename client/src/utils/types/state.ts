@@ -13,7 +13,7 @@ interface Book {
 }
 
 interface User {
-    id: string;
+    _id: string;
     username: string;
     email: string;
     password: string;
@@ -35,6 +35,7 @@ interface Token {
 interface InitState {
     currentPage: string;
     user: User | null;
+    authUser: User | null;
     token: string | null;
     refreshToken: string | null;
 }
