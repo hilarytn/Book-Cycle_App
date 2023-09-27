@@ -22,6 +22,6 @@ router.get('/users', authenticate, getUsers);
 router.put('/user/:id', authenticate, updateUser);
 router.put('/user/password/:id',authenticate, updateUserPassword);
 router.delete('/user/:id', authenticate, deleteUser);
-router.get('/logout', authenticate, logout);
+router.post('/logout', authenticate, logout);
 
 export default router; 
