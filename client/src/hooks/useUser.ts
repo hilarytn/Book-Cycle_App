@@ -1,10 +1,10 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 import useAxios from "./useAxios";
 import useNotification from "./useNotification";
 import { useDispatch } from "react-redux";
 import { setUsers } from "../redux/features/usersSlice";
-import { ServerError } from "../utils/types/errorType";
+import { FetchError } from "../utils/types/errorType";
 
 
 const useUser = () => {
@@ -23,8 +23,8 @@ const useUser = () => {
                 dispatch(setUsers(response.data))
             } catch (err) {
                 console.log(err)
-                const error = err as ServerError
-                showError(error.response.data.message)
+                const error = err as FetchError
+                showError(error.response.data.error)
             } finally {
                 setLoading(false)
             }

@@ -7,6 +7,15 @@ interface ServerError {
     }
 }
 
+interface FetchError {
+    response: {
+        data: {
+            error: string
+        }
+    }
+}
+
 export type {
-    ServerError
+    ServerError,
+    FetchError
 }

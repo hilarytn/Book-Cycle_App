@@ -1,0 +1,116 @@
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { editProfileSchema } from '../../utils/schema'
+import { EditFormType } from '../../utils/types/formType'
+import { useSelector } from 'react-redux'
+import { selectAuthUser } from '../../redux/features/userSlice'
+
+const EditForm = () => {
+
+
+    const user = useSelector(selectAuthUser)
+    const { register, handleSubmit, formState: { errors } } = useForm<EditFormType>({
+        resolver: yupResolver(editProfileSchema)
+    });
+
+    const onSubmit = (data: EditFormType) => console.log(data)
+
+
+    return (
+        <div className='flex justify-center items-center mt-10'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex flex-col md:flex-row items-center w-full justify-center md:justify-between gap-5 mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">First Name</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="firstName"
+                        id="firstName"
+                        placeholder={user?.firstName}
+                        {...register("firstName", { required: true })}
+                    />
+                    {errors.firstName && <span className='text-red-500'>{errors.firstName.message}</span>}
+                </div>
+                <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">Last Name</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="lastName"
+                        id="lastName"
+                        placeholder={user?.lastName}
+                        {...register("lastName", { required: true })}
+                    />
+                    {errors.lastName && <span className='text-red-500'>{errors.lastName.message}</span>}
+                </div>
+                <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">Address</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="address"
+                        id="address"
+                        placeholder={user?.address}
+                        {...register("address", { required: true })}
+                    />
+                    {errors.address && <span className='text-red-500'>{errors.address.message}</span>}
+                </div>
+                <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">Phone Number</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="phoneNumber"
+                        id="phoneNumber"
+                        placeholder={user?.phoneNumber}
+                        {...register("phoneNumber", { required: true })}
+                    />
+                    {errors.phoneNumber && <span className='text-red-500'>{errors.phoneNumber.message}</span>}
+                </div>
+                <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">Email</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="email"
+                        id="email"
+                        placeholder={user?.email}
+                        {...register("email", { required: true })}
+                    />
+                    {errors.email && <span className='text-red-500'>{errors.email.message}</span>}
+                </div>
+                <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
+                    <label
+                        className='text-secondary ms-3 text-lg'
+                        htmlFor="firstName">Username</label>
+                    <input
+                        className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
+                        type="username"
+                        id="username"
+                        placeholder={user?.username}
+                        {...register("username", { required: true })}
+                    />
+                    {errors.username && <span className='text-red-500'>{errors.username.message}</span>}
+                </div>
+                <div className='text-center'>
+                <button 
+                        className='bg-secondary text-white font-semibold
+                                    hover:bg-black hover:scale-75 delay-100
+                                    tracking-wide rounded py-3 px-9 mt-8 mb-6'
+                        type="submit">
+                            Update Profile</button>
+            </div>
+            </form>
+        </div>
+    )
+}
+
+
+const MermoisedEditForm = React.memo(EditForm)
+export default MermoisedEditForm

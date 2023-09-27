@@ -16,6 +16,16 @@ type RegisterForm = {
 }
 
 
+type EditFormType = {
+    email: string
+    username: string
+    firstName: string
+    lastName: string
+    phoneNumber: string
+    address: string
+}
+
+
 export type {
-    LoginForm, RegisterForm
+    LoginForm, RegisterForm, EditFormType
 }

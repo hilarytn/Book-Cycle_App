@@ -12,12 +12,12 @@ const LoginPage = () => {
       <div className="md:flex w-screen md:w-max bg-white">
         <div>
             <img 
-                className="md:w-96 h-full"
+                className="md:w-[500px] h-full"
                 src={images.login} 
                 alt="login wallpaper" />
         </div>
-        <div className="text-secondary font-serif p-8">
-            <h3 className="font-semibold text-right text-xl">Sign In</h3>
+        <div className="flex flex-col items-center justify-center text-secondary font-serif p-8">
+            <img src={images.logo} className="w-[130px]" alt="app logo" />
             <div className="flex flex-col items-center justify-center mt-10">
                 <h1 className="text-2xl font-bold tracking-wide">Log Into Your Account</h1>
                 <h3 className="my-6 font-medium tracking-wider">Connect with others</h3>
@@ -26,9 +26,9 @@ const LoginPage = () => {
             <div className="text-center">
                 <Link
                     to="/register"
-                    className="text-sm text-black
+                    className="text-md text-black
                     cursor-pointer underline hover:text-secondary
-                    font-medium tracking-wide mx-[10%]"
+                    font-medium tracking-wide"
                 >
                     Create an account with us</Link>
             </div>

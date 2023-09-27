@@ -20,6 +20,7 @@ interface User {
     firstName: string;
     lastName: string;
     address: string;
+    phoneNumber: string;
     role: string;
     books: Book[];
     createdAt: string;

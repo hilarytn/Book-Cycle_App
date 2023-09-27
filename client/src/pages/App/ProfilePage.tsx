@@ -5,13 +5,13 @@ import { Navbar } from '../../components'
 import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/features/userSlice';
+import { Link } from 'react-router-dom'
 
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
     const user = useSelector(selectAuthUser)
-    console.log(user)
 
     return (
       <>
@@ -34,8 +34,12 @@ const ProfilePage = () => {
                           </div>
                       </div>
                       <div className='flex justify-center gap-4 items-center'>
-                          <button className='bg-blue-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Edit Profile</button>
-                          <button className='bg-green-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Add Book</button>
+                          <Link
+                              to="/edit-profile"
+                              className='bg-blue-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Edit Profile</Link>
+                          <Link
+                              to="/add-book"
+                              className='bg-green-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Add Book</Link>
                       </div>
                   </div>
               </div>

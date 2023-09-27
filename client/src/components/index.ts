@@ -5,9 +5,10 @@ import MermoizedUserBooks from "./Home/UserBooks";
 import NavModal from "./NavModal";
 import Register from "./Form/Register";
 import MermoizedUsers from "./Home/Users";
+import MermoisedEditForm from "./Form/EditForm";
 
 
 export { 
-    PrivateRoute, Login, Navbar,
+    PrivateRoute, Login, Navbar, MermoisedEditForm as EditForm,
     MermoizedUserBooks as UserBooks,NavModal, Register, MermoizedUsers as Users
 };

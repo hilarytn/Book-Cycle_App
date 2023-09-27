@@ -20,6 +20,16 @@ const registerSchema = yup
         address: yup.string().required(),
     })
 
+const editProfileSchema = yup
+    .object({
+        email: yup.string().email(),
+        username: yup.string(),
+        firstName: yup.string(),
+        lastName: yup.string(),
+        phoneNumber: yup.string(),
+        address: yup.string(),
+    })
+
 export {
-    loginSchema, registerSchema
+    loginSchema, registerSchema, editProfileSchema
 }
