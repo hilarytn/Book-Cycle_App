@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
-import { InitState, User, Token } from '../../utils/types/state'
+import { InitState, User, Token, Book } from '../../utils/types/state'
 
 
 const initialState: InitState = {
@@ -36,11 +36,15 @@ export const userSlice = createSlice({
         state.token = null
         state.refreshToken = null
         state.authUser = null
+    },
+    addBook: (state, action: PayloadAction<Book>) => {
+        state.authUser?.books.push(action.payload)
     }
   },
 })
 
-export const { setCurrentPage, setUser, setToken, logoutUser,setAuthUser } = userSlice.actions
+export const { setCurrentPage, setUser, setToken, logoutUser,setAuthUser,
+                addBook} = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPage = (state: RootState) => state.user.currentPage

@@ -30,6 +30,17 @@ const editProfileSchema = yup
         address: yup.string().required(),
     })
 
+const BookSchema = yup
+    .object({
+        title: yup.string().required().min(3),
+        author: yup.string().required().min(3).max(50),
+        genre: yup.string().required().min(3).max(50),
+        description: yup.string().required().max(250),
+        condition: yup.string().required(),
+        availableStatus: yup.string().required(),
+        coverArtUrl: yup.string().required(),
+    })
+
 export {
-    loginSchema, registerSchema, editProfileSchema
+    loginSchema, registerSchema, editProfileSchema, BookSchema
 }

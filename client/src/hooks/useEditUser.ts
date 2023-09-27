@@ -14,9 +14,11 @@ const useEditUser = () => {
         const dispatch = useDispatch()
     
             const editUser = async (id: string | undefined, userData: EditFormType) => {
+                console.log(userData)
                 try {
                     const response = await protectedInstance.put(`/user/${id}`, userData)
-                    dispatch(setAuthUser(response.data))
+                    console.log(response.data)
+                    dispatch(setAuthUser)
                     showSuccess('User has been updated successfully')
                 } catch (error) {
                     console.log(error)

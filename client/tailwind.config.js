@@ -11,7 +11,7 @@ export default {
         secondary: "#5a2c21",
       },
       backgroundImage: {
-        "profile-pattern": "url('/src/assets/janko-ferlic-sfL_QOnmy00-unsplash.jpg')",
+        "profile-pattern": "url('/src/assets/cartoonreader.jpg')",
         "hero-pattern": "url('/src/assets/henry-be-TCsCykbwSJw-unsplash.jpg')",
       }
     },

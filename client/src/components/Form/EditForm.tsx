@@ -19,6 +19,8 @@ const EditForm = () => {
 
     const onSubmit = (data: EditFormType) => {
         editUser(user?._id, data)
+        console.log(user?._id)
+        console.log(data)
     }
 
 
@@ -33,7 +35,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="firstName"
                         id="firstName"
-                        // placeholder={user?.firstName}
                         defaultValue={user?.firstName}
                         {...register("firstName", { required: true })}
                     />
@@ -47,7 +48,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="lastName"
                         id="lastName"
-                        // placeholder={user?.lastName}
                         defaultValue={user?.lastName}
                         {...register("lastName", { required: true })}
                     />
@@ -61,7 +61,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="address"
                         id="address"
-                        // placeholder={user?.address}
                         defaultValue={user?.address}
                         {...register("address", { required: true })}
                     />
@@ -75,7 +74,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="phoneNumber"
                         id="phoneNumber"
-                        // placeholder={user?.phoneNumber}
                         defaultValue={user?.phoneNumber}
                         {...register("phoneNumber", { required: true })}
                     />
@@ -89,7 +87,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="email"
                         id="email"
-                        // placeholder={user?.email}
                         defaultValue={user?.email}
                         {...register("email", { required: true })}
                     />
@@ -103,7 +100,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="username"
                         id="username"
-                        // placeholder={user?.username}
                         defaultValue={user?.username}
                         {...register("username", { required: true })}
                     />
@@ -116,7 +112,7 @@ const EditForm = () => {
                                     tracking-wide rounded py-3 px-9 mt-8 mb-6'
                         type="submit">
                             Update Profile</button>
-            </div>
+                </div>
             </form>
         </div>
     )

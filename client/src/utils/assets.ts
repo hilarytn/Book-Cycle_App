@@ -1,5 +1,6 @@
 import LoginImage from '../assets/mariia-zakatiura-t7zYZzO_CX0-unsplash.jpg';
 import Logo from '../assets/logo-no-background.svg';
+import DarkLogo from '../assets/cartoonreader.jpg'
 
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -13,11 +14,13 @@ import { FaLocationDot } from 'react-icons/fa6'
 import { IoLogOutSharp } from 'react-icons/io5'
 import { ImBooks } from 'react-icons/im'
 import { CgArrowLongRightC } from 'react-icons/cg'
+import { ImExit } from 'react-icons/im'
 
 
 const images = {
     login: LoginImage,
-    logo: Logo
+    logo: Logo,
+    darkLogo: DarkLogo
 }
 
 const icons = {
@@ -37,7 +40,8 @@ const icons = {
     identityIcon: BsPersonVcardFill,
     logoutIcon: IoLogOutSharp,
     bookIcon: ImBooks,
-    arrowIcon: CgArrowLongRightC
+    arrowIcon: CgArrowLongRightC,
+    exitIcon: ImExit
 }
 
 export { images, icons }; 
