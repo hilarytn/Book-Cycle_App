@@ -9,7 +9,8 @@ import {
     getUsers,
     updateUser,
     deleteUser,
-    updateUserPassword
+    updateUserPassword,
+    logout
 } from '../controllers/AuthController.js';
 import { authenticate } from '../middleware/authenticate.js';
 
@@ -21,5 +22,6 @@ router.get('/users', authenticate, getUsers);
 router.put('/user/:id', authenticate, updateUser);
 router.put('/user/password/:id',authenticate, updateUserPassword);
 router.delete('/user/:id', authenticate, deleteUser);
+router.get('/logout', authenticate, logout);
 
 export default router; 
