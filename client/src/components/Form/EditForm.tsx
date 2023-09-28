@@ -18,7 +18,6 @@ const EditForm = () => {
     });
 
     const onSubmit = (data: EditFormType) => {
-        console.log(data)
         editUser(user?._id, data)
     }
 
@@ -34,7 +33,6 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="firstName"
                         id="firstName"
-                        // placeholder={user?.firstName}
                         defaultValue={user?.firstName}
                         {...register("firstName", { required: true })}
                     />
@@ -43,12 +41,11 @@ const EditForm = () => {
                 <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
                     <label
                         className='text-secondary ms-3 text-lg'
-                        htmlFor="firstName">Last Name</label>
+                        htmlFor="lastName">Last Name</label>
                     <input
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="lastName"
                         id="lastName"
-                        // placeholder={user?.lastName}
                         defaultValue={user?.lastName}
                         {...register("lastName", { required: true })}
                     />
@@ -57,12 +54,11 @@ const EditForm = () => {
                 <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
                     <label
                         className='text-secondary ms-3 text-lg'
-                        htmlFor="firstName">Address</label>
+                        htmlFor="address">Address</label>
                     <input
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="address"
                         id="address"
-                        // placeholder={user?.address}
                         defaultValue={user?.address}
                         {...register("address", { required: true })}
                     />
@@ -71,13 +67,12 @@ const EditForm = () => {
                 <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
                     <label
                         className='text-secondary ms-3 text-lg'
-                        htmlFor="firstName">Phone Number</label>
+                        htmlFor="phoneNumber">Phone Number</label>
                     <input
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="phoneNumber"
                         id="phoneNumber"
                         defaultValue={user?.phoneNumber}
-                        // placeholder={user?.phoneNumber}
                         {...register("phoneNumber", { required: true })}
                     />
                     {errors.phoneNumber && <span className='text-red-500'>{errors.phoneNumber.message}</span>}
@@ -85,12 +80,11 @@ const EditForm = () => {
                 <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
                     <label
                         className='text-secondary ms-3 text-lg'
-                        htmlFor="firstName">Email</label>
+                        htmlFor="email">Email</label>
                     <input
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="email"
                         id="email"
-                        // placeholder={user?.email}
                         defaultValue={user?.email}
                         {...register("email", { required: true })}
                     />
@@ -99,12 +93,11 @@ const EditForm = () => {
                 <div className="flex flex-col md:flex-row items-center gap-5 w-full justify-center md:justify-between mb-8">
                     <label
                         className='text-secondary ms-3 text-lg'
-                        htmlFor="firstName">Username</label>
+                        htmlFor="username">Username</label>
                     <input
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="username"
                         id="username"
-                        // placeholder={user?.username}
                         defaultValue={user?.username}
                         {...register("username", { required: true })}
                     />

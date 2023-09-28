@@ -6,12 +6,15 @@ import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/features/userSlice';
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { CreateBook } from '../../components';
 
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
     const user = useSelector(selectAuthUser)
+    const [ showModal, setShowModal ] = useState<boolean>(false)
 
     return (
       <>
@@ -37,9 +40,9 @@ const ProfilePage = () => {
                           <Link
                               to="/edit-profile"
                               className='bg-blue-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Edit Profile</Link>
-                          <Link
-                              to="/add-book"
-                              className='bg-green-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Add Book</Link>
+                          <button
+                              onClick={() => setShowModal(true)}
+                              className='bg-green-600 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Add Book</button>
                       </div>
                   </div>
               </div>
@@ -61,6 +64,9 @@ const ProfilePage = () => {
                   </div>
               </div>
           </div>
+
+
+          {showModal && <CreateBook setShowModal={setShowModal} />}
       </>
     )
 }

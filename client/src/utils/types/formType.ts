@@ -25,7 +25,17 @@ type EditFormType = {
     address: string
 }
 
+type BookFormType = {
+    title: string | undefined
+    author: string | undefined
+    genre: string | undefined
+    description: string | undefined
+    condition: string | undefined
+    availableStatus: string | undefined
+    coverArtUrl: File | undefined
+}
+
 
 export type {
-    LoginForm, RegisterForm, EditFormType
+    LoginForm, RegisterForm, EditFormType, BookFormType
 }
