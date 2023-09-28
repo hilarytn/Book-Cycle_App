@@ -37,12 +37,11 @@ const useAxios = () => {
             if (error.response.status === 401 && !originalRequest._retry){
                 originalRequest._retry = true
     
-                const newAccessToken = await refreshAccessToken(refreshToken)
-                if (newAccessToken){
-                    token = newAccessToken
-                    localStorage.setItem('token', token)
-                    return protectedInstance(originalRequest)
-                }
+                const response = await refreshAccessToken(refreshToken)
+                localStorage.setItem('token', response.accessToken)
+                token = response.accessToken
+                originalRequest.headers['x-auth-token'] = `${token}`
+                return protectedInstance(originalRequest)
             }
     
             return Promise.reject(error)
