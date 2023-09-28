@@ -5,16 +5,22 @@ import { editProfileSchema } from '../../utils/schema'
 import { EditFormType } from '../../utils/types/formType'
 import { useSelector } from 'react-redux'
 import { selectAuthUser } from '../../redux/features/userSlice'
+import useEditUser from '../../hooks/useEditUser'
 
 const EditForm = () => {
 
 
     const user = useSelector(selectAuthUser)
+    const { editUser } = useEditUser()
+
     const { register, handleSubmit, formState: { errors } } = useForm<EditFormType>({
         resolver: yupResolver(editProfileSchema)
     });
 
-    const onSubmit = (data: EditFormType) => console.log(data)
+    const onSubmit = (data: EditFormType) => {
+        console.log(data)
+        editUser(user?._id, data)
+    }
 
 
     return (
@@ -28,7 +34,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="firstName"
                         id="firstName"
-                        placeholder={user?.firstName}
+                        // placeholder={user?.firstName}
+                        defaultValue={user?.firstName}
                         {...register("firstName", { required: true })}
                     />
                     {errors.firstName && <span className='text-red-500'>{errors.firstName.message}</span>}
@@ -41,7 +48,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="lastName"
                         id="lastName"
-                        placeholder={user?.lastName}
+                        // placeholder={user?.lastName}
+                        defaultValue={user?.lastName}
                         {...register("lastName", { required: true })}
                     />
                     {errors.lastName && <span className='text-red-500'>{errors.lastName.message}</span>}
@@ -54,7 +62,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="address"
                         id="address"
-                        placeholder={user?.address}
+                        // placeholder={user?.address}
+                        defaultValue={user?.address}
                         {...register("address", { required: true })}
                     />
                     {errors.address && <span className='text-red-500'>{errors.address.message}</span>}
@@ -67,7 +76,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="phoneNumber"
                         id="phoneNumber"
-                        placeholder={user?.phoneNumber}
+                        defaultValue={user?.phoneNumber}
+                        // placeholder={user?.phoneNumber}
                         {...register("phoneNumber", { required: true })}
                     />
                     {errors.phoneNumber && <span className='text-red-500'>{errors.phoneNumber.message}</span>}
@@ -80,7 +90,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="email"
                         id="email"
-                        placeholder={user?.email}
+                        // placeholder={user?.email}
+                        defaultValue={user?.email}
                         {...register("email", { required: true })}
                     />
                     {errors.email && <span className='text-red-500'>{errors.email.message}</span>}
@@ -93,7 +104,8 @@ const EditForm = () => {
                         className='border-2 border-secondary placeholder:text-secondary rounded py-3 px-9'
                         type="username"
                         id="username"
-                        placeholder={user?.username}
+                        // placeholder={user?.username}
+                        defaultValue={user?.username}
                         {...register("username", { required: true })}
                     />
                     {errors.username && <span className='text-red-500'>{errors.username.message}</span>}
