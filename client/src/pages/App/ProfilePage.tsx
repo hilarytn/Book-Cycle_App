@@ -6,12 +6,18 @@ import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/features/userSlice';
 import { Link } from 'react-router-dom'
+import usePassword from '../../hooks/usePassword';
 
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
     const user = useSelector(selectAuthUser)
+    const { changePassword } = usePassword()
+
+    const handleChange = () => {
+        changePassword(user?._id)
+    }
 
     return (
       <>
@@ -20,6 +26,15 @@ const ProfilePage = () => {
               <div className='flex flex-wrap items-center justify-center gap-10'>
                   <div>
                       <img src={Default} alt="Profile Image" className="rounded-full h-[150px] w-[150px] mx-auto mb-4" />
+                      <div className='flex gap-2 items-center'>
+                        {/* <button
+                            onClick={handleChange}
+                            className='bg-gray-400 hover:bg-gray-800 delay-100 p-2 text-xs text-white tracking-wide'
+                        >change password</button>
+                        <button
+                            className='bg-red-400 hover:bg-red-800 delay-100 p-2 text-xs text-white tracking-wide'
+                        >delete account</button> */}
+                      </div>
                   </div>
                   <div className='flex flex-col text-center gap-3 text-gray-700'>
                       <h2 className='text-[24px] tracking-wide'>{user?.firstName} {user?.lastName}</h2>
