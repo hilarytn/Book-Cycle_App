@@ -32,8 +32,15 @@ const AddBook = () => {
             bookData.coverArtUrl = coverArtUrlRef.current?.files[0]
         }
 
-        console.log(bookData);
         postBook(bookData);
+
+        titleRef.current!.value = '';
+        authorRef.current!.value = '';
+        genreRef.current!.value = '';
+        descriptionRef.current!.value = '';
+        coverArtUrlRef.current!.value = '';
+        availableStatusRef.current!.value = '';
+        conditionRef.current!.value = '';
     };
 
   return (

@@ -11,6 +11,7 @@ function usePostBook() {
 
   const postBook = useCallback(
     async (book: BookFormType) => {
+      protectedInstance.defaults.headers['Content-Type'] = 'multipart/form-data'
       try {
         await protectedInstance.post("/books", book);
         showSuccess("Book successfully added");
