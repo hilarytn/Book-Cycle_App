@@ -4,11 +4,12 @@ import type { RootState } from '../store'
 
 import { InitState, User, Token } from '../../utils/types/state'
 
+const authUserJson = localStorage.getItem('authUser')
 
 const initialState: InitState = {
     currentPage: '',
     user: null,
-    authUser: null,
+    authUser: authUserJson ? JSON.parse(authUserJson) : null,
     token: localStorage.getItem('token') || null,
     refreshToken: localStorage.getItem('refreshToken') || null
 }
@@ -21,6 +22,7 @@ export const userSlice = createSlice({
         state.currentPage = action.payload
     },
     setAuthUser: (state, action: PayloadAction<User>) => {
+        localStorage.setItem('authUser', JSON.stringify(action.payload))
         state.authUser = action.payload
     },
     setUser: (state, action: PayloadAction<User>) => {

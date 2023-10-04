@@ -3,30 +3,19 @@ import useSetCurrentPage from '../../hooks/useSetCurrentPage'
 import { icons } from '../../utils/assets'
 import { Navbar } from '../../components'
 import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
-import { useSelector } from 'react-redux';
-import { selectAuthUser } from '../../redux/features/userSlice';
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD
-import usePassword from '../../hooks/usePassword';
-=======
 import { useState } from 'react';
 import { CreateBook } from '../../components';
->>>>>>> feature/create-book
+import { Book } from '../../utils/types/state';
 
+
+const authUser = localStorage.getItem('authUser')
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
-    const user = useSelector(selectAuthUser)
-<<<<<<< HEAD
-    const { changePassword } = usePassword()
-
-    const handleChange = () => {
-        changePassword(user?._id)
-    }
-=======
+    const user = authUser && JSON.parse(authUser)
     const [ showModal, setShowModal ] = useState<boolean>(false)
->>>>>>> feature/create-book
 
     return (
       <>
@@ -77,7 +66,7 @@ const ProfilePage = () => {
                       />
                   </div>
                   <div className='grid gap-5 grid-cols-2 lg:grid-cols-4'>
-                      {user && user.books.length > 0 ? user.books.map((book, index) => (
+                      {user && user.books.length > 0 ? user.books.map((book: Book, index: number) => (
                           <img key={index} className='w-[250px] h-[250px]' src={book.coverArtUrl} alt="Books" />
                       )) : (
                           <p className='lg:mt-9 text-red-700 col-span-2 text-[30px]'>User has no books</p>
