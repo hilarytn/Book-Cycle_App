@@ -12,5 +12,5 @@ export {
     ProfilePage,
     RegisterPage,
     UserDetailPage,
-    EditProfilePage
+    EditProfilePage,
 }

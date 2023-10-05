@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify"
 
 import { PrivateRoute } from "./components"
 import { LoginPage, HomePage, ProfilePage, RegisterPage, UserDetailPage,
-          EditProfilePage} from "./pages"
+          EditProfilePage } from "./pages"
 
 
 const App: React.FC = () => {
