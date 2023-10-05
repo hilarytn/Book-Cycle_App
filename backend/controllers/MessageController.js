@@ -26,7 +26,7 @@ export const getMessages = async (req, res) => {
         const to = req.params.user2Id;
         const newMessage = await Message.find({
             chatUsers: {
-                $all: [from, to] } }).sort({ createdAt: -1 });
+                $all: [from, to] } }).sort({ createdAt: 1 });
 
         const messages = newMessage.map((message) => {
             return {
