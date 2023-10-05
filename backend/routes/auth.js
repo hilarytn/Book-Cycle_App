@@ -20,7 +20,7 @@ router.post('/user/login', login);
 router.post('/user/refresh-token', refreshToken);
 router.get('/user/:id', authenticate, getUser);
 router.get('/users', authenticate, getUsers);
-router.put('/user/:id', authenticate, updateUser);
+router.put('/user/:id', authenticate, upload.single('profilePicture'), updateUser);
 router.put('/user/password/:id',authenticate, updateUserPassword);
 router.delete('/user/:id', authenticate, deleteUser);
 router.post('/logout', authenticate, logout);
