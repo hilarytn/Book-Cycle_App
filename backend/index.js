@@ -7,6 +7,7 @@ import bookRoutes from './routes/books.js';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 import swapRoutes from './routes/swap.js';
+import messageRoutes from './routes/message.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use('/api', authRoutes);
 app.use('/api', bookRoutes);
 app.use('/api', swapRoutes);
+app.use('/api', messageRoutes);
 
 app.get('/', (req, res) => {
   res.send('Home Page, Welcome! to Book-Cycle App - API');

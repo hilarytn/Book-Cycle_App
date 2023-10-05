@@ -25,7 +25,6 @@ export const createBook = async (req, res) => {
       condition,
       availabilityStatus,
       coverArtUrl,
-      //owner: req.user._id,
     });
 
     const savedBook = await book.save();
