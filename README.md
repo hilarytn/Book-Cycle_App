@@ -98,3 +98,5 @@ This project is licensed under the MIT License - see the <b>LICENSE</b> file for
 ### Authors
 1. Nadduli Daniel <naddulidaniel1994@gmail.com>
 2. Hilary Titus Naor <hilarytn@gmail.com>
+3. Emmanuel Gyang <irvingmanny@gmail.com>
+
