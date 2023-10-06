@@ -5,7 +5,8 @@ import {
     getPendingSwaps,
     acceptSwap,
     rejectSwap,
-    getCompletedSwaps
+    getCompletedSwaps,
+    searchSwaps
 } from '../controllers/SwapController.js';
 
 import { authenticate } from '../middleware/authenticate.js';
@@ -82,6 +83,16 @@ router.put('/swaps/:id/reject', authenticate, rejectSwap);
  * @name getCompletedSwaps
  */
 router.get('/swaps/completed', authenticate, getCompletedSwaps);
+
+/**
+ * search swaps
+ * @route GET /swaps/search
+ * @returns {object} The searched swap.
+ * @throws {Error} If the request is invalid or an error occurs.
+ * @access Private
+ * @name searchSwaps
+ */
+router.get('/swaps/search', authenticate, searchSwaps);
 
 
 export default router;

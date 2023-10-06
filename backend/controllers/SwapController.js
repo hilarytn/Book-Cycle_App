@@ -87,3 +87,29 @@ export const getCompletedSwaps = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+//@desc  search and filter of swaps basing on the status using regex and mongoosePaginate
+//@route GET /api/swaps/search
+//@access Private
+
+export const searchSwaps = async (req, res) => {
+  try {
+    const { status } = req.query;
+    const options = {
+      page: parseInt(req.query.page) || 1,
+      limit: parseInt(req.query.limit) || 10,
+      populate: 'initiator recipient book',
+      sort: { createdAt: -1 },
+    };
+    const query = {};
+    if (status) {
+      query.status = { $regex: status, $options: 'i' };
+    }
+    const swaps = await Swap.paginate(query, options);
+    res.status(200).json(swaps);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

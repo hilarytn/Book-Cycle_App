@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const { Schema } = mongoose;
 
@@ -25,6 +26,8 @@ const swapSchema = new Schema({
   },
 }, { timestamps: true });
 
+swapSchema.plugin(mongoosePaginate);
+swapSchema.index({ status: 1, createdAt: 1});
 const Swap = mongoose.model('Swap', swapSchema);
 
 export default Swap;
