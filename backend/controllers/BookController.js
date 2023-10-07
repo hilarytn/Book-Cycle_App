@@ -1,5 +1,6 @@
 import path from 'path';
 import Book from '../models/Book.js';
+import User from '../models/User.js';
 
 export const createBook = async (req, res) => {
   try {
@@ -28,6 +29,10 @@ export const createBook = async (req, res) => {
     });
 
     const savedBook = await book.save();
+    const user = await User.findById(req.user._id);
+    user.books.push(savedBook._id);
+    await user.save();
+    
     res.status(201).json(savedBook);
   } catch (error) {
     res.status(500).json({ error: error.message });

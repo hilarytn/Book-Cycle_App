@@ -7,7 +7,7 @@ export const authenticate = async(req, res, next) => {
             return res.status(401).json({message: "Access denied. No token provided"});
         }
         const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        req.user = decoded.user;
+        req.user = decoded;
         next();
         
     } catch (error) {
