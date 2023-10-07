@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 const Users = () => {
   const { loading } = useUser();
   const users = useSelector(selectUsers);
-  console.log(users);
 
   return (
     <section>

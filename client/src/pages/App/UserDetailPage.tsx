@@ -5,12 +5,14 @@ import { Navbar } from '../../components'
 import Default from '../../assets/henry-be-TCsCykbwSJw-unsplash.jpg';
 import { useParams } from 'react-router';
 import useFetchUser from '../../hooks/useFetchUser';
+import { useNavigate } from 'react-router-dom';
 
 const UserDetailPage = () => {
 
     useSetCurrentPage(PageEnum.UserDetail)
     const { id } = useParams<{id: string}>()
     const { user } = useFetchUser(id)
+    const navigate = useNavigate()
 
 
   return (
@@ -33,7 +35,9 @@ const UserDetailPage = () => {
                             <p>{user?.email}</p>
                         </div>
                     </div>
-                    <div>
+                    <div
+                        onClick={() => navigate(`/chat/${user?._id}`)}
+                    >
                         <button className='bg-green-800 hover:scale-90 delay-100 p-4 rounded-full text-white tracking-wide'>Message Me</button>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import ProfilePage from "./App/ProfilePage";
 import RegisterPage from "./Auth/RegisterPage";
 import UserDetailPage from "./App/UserDetailPage";
 import EditProfilePage from "./App/EditProfilePage";
+import ChatPage from "./App/ChatPage";
 
 
 export {
@@ -13,4 +14,5 @@ export {
     RegisterPage,
     UserDetailPage,
     EditProfilePage,
+    ChatPage
 }

@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify"
 
 import { PrivateRoute } from "./components"
 import { LoginPage, HomePage, ProfilePage, RegisterPage, UserDetailPage,
-          EditProfilePage } from "./pages"
+          EditProfilePage,ChatPage } from "./pages"
 
 
 const App: React.FC = () => {
@@ -18,6 +18,7 @@ const App: React.FC = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/user/:id" element={<UserDetailPage />} />
             <Route path="/edit-profile" element={<EditProfilePage />} />
+            <Route path="/chat/:id" element={<ChatPage />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

@@ -7,14 +7,17 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { CreateBook } from '../../components';
 import { Book } from '../../utils/types/state';
+import { useSelector } from 'react-redux';
+import { selectAuthUser } from '../../redux/features/userSlice';
 
 
-const authUser = localStorage.getItem('authUser')
+const authUser: string = localStorage.getItem('authUser') || ''
 
 const ProfilePage = () => {
 
     useSetCurrentPage(PageEnum.Profile)
-    const user = authUser && JSON.parse(authUser)
+    const user = useSelector(selectAuthUser) || JSON.parse(authUser)
+    console.log(user)
     const [ showModal, setShowModal ] = useState<boolean>(false)
 
     return (
