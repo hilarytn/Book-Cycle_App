@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 
 // @desc    Register a new user
-// @route   POST /api/auth/register
+// @route   POST /api/user/register
 // @access  Public
 export const register = async (req, res) => {
   try {
@@ -32,7 +32,7 @@ export const register = async (req, res) => {
 };
 
 // @desc    Login a user
-// @route   POST /api/auth/login
+// @route   POST /api/user/login
 // @access  Public
 
 export const login = async (req, res) => {
@@ -59,13 +59,13 @@ export const login = async (req, res) => {
     );
     res.cookie('token', token, {
       httpOnly: true,
-      path: '/api/auth/login',
+      path: '/api/user/login',
       maxAge: 1000 * 60 * 60 * 24 * 7,
       });
       
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      path: '/api/auth/refresh-token',
+      path: '/api/user/refresh-token',
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
 };
 
 // @desc    Refresh token
-// @route   POST /api/auth/refresh-token
+// @route   POST /api/user/refresh-token
 // @access  Public
 
 export const refreshToken = async (req, res) => {
@@ -115,7 +115,7 @@ export const refreshToken = async (req, res) => {
 };
 
 // @desc    retrieve user info
-// @route   GET /api/auth/user
+// @route   GET /api/user/:id
 // @access  Private
 
 export const getUser = async (req, res) => {
@@ -131,7 +131,7 @@ export const getUser = async (req, res) => {
 };
 
 // @desc    update user info
-// @route   PUT /api/auth/user
+// @route   PUT /api/user/:id
 // @access  Private
 
 export const updateUser = async (req, res) => {
@@ -162,7 +162,7 @@ export const updateUser = async (req, res) => {
 };
 
 // @desc    update user password
-// @route   PUT /api/auth/user/password
+// @route   PUT /api/user/password/:id
 // @access  Private
 
 export const updateUserPassword = async (req, res) => {
@@ -182,7 +182,7 @@ export const updateUserPassword = async (req, res) => {
 };
 
 // @desc    delete user
-// @route   DELETE /api/auth/user
+// @route   DELETE /api/user/:id
 // @access  Private
 
 export const deleteUser = async (req, res) => {
@@ -198,7 +198,7 @@ export const deleteUser = async (req, res) => {
 };
 
 // @desc    get all users
-// @route   GET /api/auth/users
+// @route   GET /api/users
 // @access  Private
 
 export const getUsers = async (req, res) => {
@@ -214,7 +214,7 @@ export const getUsers = async (req, res) => {
 };
 
 // @desc    logout user
-// @route   GET /api/auth/logout
+// @route   GET /api/user/logout
 // @access  Private
 
 export const logout = async (req, res) => {

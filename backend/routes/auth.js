@@ -23,6 +23,6 @@ router.get('/users', authenticate, getUsers);
 router.put('/user/:id', authenticate, upload.single('profilePictureUrl'), updateUser);
 router.put('/user/password/:id',authenticate, updateUserPassword);
 router.delete('/user/:id', authenticate, deleteUser);
-router.post('/logout', authenticate, logout);
+router.post('/user/logout', authenticate, logout);
 
 export default router;

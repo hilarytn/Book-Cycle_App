@@ -1,12 +1,18 @@
 import path from 'path';
 import Book from '../models/Book.js';
 import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 export const createBook = async (req, res) => {
   try {
     const {
       title, author, genre, description, condition, availabilityStatus,
     } = req.body;
+
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    const userId = decoded.id;
+
     const existingBook = await Book.findOne({ title });
 
     if (existingBook) {
@@ -18,6 +24,7 @@ export const createBook = async (req, res) => {
     if (req.file) {
       coverArtUrl = req.file.path;
     }
+
     const book = new Book({
       title,
       author,
@@ -26,13 +33,15 @@ export const createBook = async (req, res) => {
       condition,
       availabilityStatus,
       coverArtUrl,
+      owner: userId,
     });
 
     const savedBook = await book.save();
-    const user = await User.findById(req.user._id);
-    user.books.push(savedBook._id);
-    await user.save();
-    
+
+    const updatedUser = await User.findByIdAndUpdate(userId,
+      { $push: { books: savedBook._id } },
+      { new: true });
+
     res.status(201).json(savedBook);
   } catch (error) {
     res.status(500).json({ error: error.message });
