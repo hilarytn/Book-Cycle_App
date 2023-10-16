@@ -1,4 +1,5 @@
 import Message from "../models/Message.js";
+import Chatroom from "../models/Chatroom.js";
 
 // @desc     create message
 // @route    POST /api/messages
@@ -6,6 +7,18 @@ import Message from "../models/Message.js";
 export const createMessage = async (req, res) => {
     try {
         const { from, to, content } = req.body;
+        let chatroom = await Chatroom.findOne({
+            members: {
+                $all: [from, to]
+            }
+        });
+        if (!chatroom) {
+            chatroom = await Chatroom.create({
+                name: `${from}-${to}`,
+                members: [from, to]
+            });
+        }
+
         const newMessage = await Message.create({
             content,
             chatUsers: [from, to],
@@ -40,5 +53,3 @@ export const getMessages = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
-
-

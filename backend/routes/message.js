@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.post('/chat', authenticate, createMessage);
-router.get('/chat/:user1Id/:user2Id', getMessages);
+router.get('/chat/:user1Id/:user2Id', authenticate,getMessages);
 
 export default router;
 
